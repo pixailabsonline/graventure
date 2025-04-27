@@ -103,17 +103,82 @@ li:hover::before {
 
 /* Hero Section */
 .hero {
-    background-color: #0a0a0c; /* Slightly lighter hero bg for depth */
+    background-color: #0a0a0c; /* Base dark color */
     text-align: center;
     padding: 100px 0 80px;
-    /* Gradient Border */
-    border-bottom: 4px solid transparent;
-    border-image: linear-gradient(to right, #007bff, #00aaff) 1;
+    position: relative; /* Needed for pseudo-elements */
+    overflow: hidden; /* Hide overflowing animated elements */
+    border-bottom: none; /* Remove static border, effect implies separation */
+}
+
+/* Animated Background Layer 1: Shifting Linear Gradient */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Behind content */
+    background: linear-gradient(
+        135deg, 
+        rgba(0, 123, 255, 0.1) 0%, 
+        rgba(0, 86, 179, 0.05) 50%, 
+        rgba(0, 170, 255, 0.1) 100%
+    );
+    background-size: 200% 200%; /* Make gradient large */
+    animation: subtleGradientShift 20s ease infinite alternate;
+    opacity: 0.6; /* Keep it subtle */
+}
+
+/* Animated Background Layer 2: Moving Radial Glow */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: -50%; /* Position partially off-screen */
+    left: -50%;
+    width: 200%; /* Make it very large */
+    height: 200%;
+    z-index: 0; /* Furthest back */
+    background: radial-gradient(
+        circle, 
+        rgba(0, 170, 255, 0.08) 0%, 
+        rgba(0, 123, 255, 0) 50% /* Fade out */
+    );
+    animation: subtleGlowMove 30s linear infinite alternate;
+    opacity: 0.5;
+}
+
+.hero .container {
+    position: relative; /* Ensure content stays above pseudo-elements */
+    z-index: 2;
+}
+
+/* Keyframes for Layer 1 */
+@keyframes subtleGradientShift {
+    0% {
+        background-position: 0% 50%;
+        transform: rotate(0deg);
+    }
+    100% {
+        background-position: 100% 50%;
+        transform: rotate(5deg); /* Slight rotation */
+    }
+}
+
+/* Keyframes for Layer 2 */
+@keyframes subtleGlowMove {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(10%, 10%); /* Move the glow slightly */
+    }
 }
 
 .hero h1 {
     color: #ffffff;
-    text-shadow: none; /* Removed glow */
+    text-shadow: none;
 }
 
 .hero h2 {
