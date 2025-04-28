@@ -101,79 +101,90 @@ li:hover::before {
     transform: scale(1.2); /* Subtle scale on hover */
 }
 
-/* Hero Section */
+/* Hero Section - Enhanced CSS Animation */
 .hero {
-    background-color: #0a0a0c; /* Base dark color */
+    /* Layer 1: Slow rotating base gradient */
+    background: linear-gradient(
+        110deg,
+        #0a0a0c 20%,
+        rgba(0, 86, 179, 0.1) 50%,
+        #0a0a0c 80%
+    );
+    background-size: 300% 300%;
+    animation: rotateGradient 35s ease infinite;
+
     text-align: center;
     padding: 100px 0 80px;
     position: relative; /* Needed for pseudo-elements */
     overflow: hidden; /* Hide overflowing animated elements */
-    border-bottom: none; /* Remove static border, effect implies separation */
+    border-bottom: none; /* Remove static border */
 }
 
-/* Animated Background Layer 1: Shifting Linear Gradient */
+/* Layer 2: Drifting/Fading Glows */
 .hero::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; right: 0; bottom: 0;
     z-index: 1; /* Behind content */
-    background: linear-gradient(
-        135deg, 
-        rgba(0, 123, 255, 0.1) 0%, 
-        rgba(0, 86, 179, 0.05) 50%, 
-        rgba(0, 170, 255, 0.1) 100%
-    );
-    background-size: 200% 200%; /* Make gradient large */
-    animation: subtleGradientShift 20s ease infinite alternate;
-    opacity: 0.6; /* Keep it subtle */
+    background-image: 
+        radial-gradient(circle at 15% 25%, rgba(0, 123, 255, 0.15), transparent 30%),
+        radial-gradient(circle at 80% 40%, rgba(0, 170, 255, 0.1), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(0, 123, 255, 0.12), transparent 20%);
+    background-size: 250% 250%, 200% 200%, 180% 180%;
+    animation: moveGlows 30s linear infinite alternate;
+    opacity: 0.7;
 }
 
-/* Animated Background Layer 2: Moving Radial Glow */
+/* Layer 3: Subtle Noise/Texture Overlay */
 .hero::after {
     content: '';
     position: absolute;
-    top: -50%; /* Position partially off-screen */
-    left: -50%;
-    width: 200%; /* Make it very large */
-    height: 200%;
-    z-index: 0; /* Furthest back */
-    background: radial-gradient(
-        circle, 
-        rgba(0, 170, 255, 0.08) 0%, 
-        rgba(0, 123, 255, 0) 50% /* Fade out */
+    top: -50%; left: -50%; /* Cover area larger than viewport */
+    width: 200%; height: 200%;
+    z-index: 2; /* Closer to content, but still behind */
+    /* Simulating noise with a very fine repeating gradient */
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.01), 
+        rgba(255, 255, 255, 0.01) 1px,
+        transparent 1px,
+        transparent 3px /* Adjust spacing for density */
     );
-    animation: subtleGlowMove 30s linear infinite alternate;
-    opacity: 0.5;
+    animation: subtleNoise 40s linear infinite;
+    opacity: 0.5; /* Keep it very faint */
 }
 
 .hero .container {
     position: relative; /* Ensure content stays above pseudo-elements */
-    z-index: 2;
+    z-index: 3; /* Above all background layers */
 }
 
 /* Keyframes for Layer 1 */
-@keyframes subtleGradientShift {
-    0% {
-        background-position: 0% 50%;
-        transform: rotate(0deg);
-    }
-    100% {
-        background-position: 100% 50%;
-        transform: rotate(5deg); /* Slight rotation */
-    }
+@keyframes rotateGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Keyframes for Layer 2 */
-@keyframes subtleGlowMove {
-    0% {
-        transform: translate(0, 0);
+@keyframes moveGlows {
+    0% { 
+        background-position: 0% 0%, 100% 100%, 50% 50%;
+        opacity: 0.6;
     }
-    100% {
-        transform: translate(10%, 10%); /* Move the glow slightly */
+    50% {
+        opacity: 0.8;
     }
+    100% { 
+        background-position: 100% 100%, 0% 0%, 75% 25%; 
+        opacity: 0.6;
+    }
+}
+
+/* Keyframes for Layer 3 */
+@keyframes subtleNoise {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-10%, -10%); } /* Slow drift */
 }
 
 .hero h1 {
@@ -181,18 +192,56 @@ li:hover::before {
     text-shadow: none;
 }
 
+/* REMOVE generic .hero h2 styles entirely */
+/*
 .hero h2 {
-    font-size: 1.6rem; /* Adjusted size */
-    font-weight: 400; /* Normal weight for subtitle */
-    font-family: 'Source Sans Pro', sans-serif; /* Use body font for subtitle */
+    font-size: 1.6rem; 
+    font-weight: 400; 
+    font-family: 'Source Sans Pro', sans-serif; 
     line-height: 1.5;
     margin-bottom: 2rem;
-    color: #c0c0c0; /* Slightly dimmer than main text */
+    color: #c0c0c0; 
     border-bottom: none;
     display: block;
     max-width: 750px;
     margin-left: auto;
     margin-right: auto;
+}
+*/
+
+.hero h2.hero-tagline {
+    /* Apply necessary styles directly */
+    font-size: 1.6rem; 
+    font-weight: 400; 
+    font-family: 'Source Sans Pro', sans-serif; 
+    line-height: 1.5;
+    margin: 0 auto 2rem auto; /* Center block and add bottom margin */
+    color: #c0c0c0; 
+    display: block; 
+    max-width: 750px;
+    text-align: center; /* Center the container */
+}
+
+.hero h2.hero-tagline #typing-text {
+    white-space: pre-wrap; 
+    display: block; /* Force block display for lines */
+    text-align: center; /* Center text within the block */
+    /* margin: 0 auto; Remove, parent handles centering */
+}
+
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.3em;
+    background-color: #e0e0e0;
+    margin-left: 5px;
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    from, to { background-color: transparent; }
+    50% { background-color: #e0e0e0; } /* Visible state */
 }
 
 .hero p {
@@ -202,13 +251,26 @@ li:hover::before {
     color: #d0d0d0;
 }
 
-.hero .arm {
+.hero p.arm {
+    min-height: 1.5em; /* Ensure space while empty */
+    /* Inherits font styles, color, etc. Ensure it matches the original look */
     font-family: 'Exo 2', sans-serif;
     font-weight: 700;
     font-size: 1.2rem;
     color: #ffffff;
     margin-top: 2.5rem;
-    text-shadow: none; /* Removed glow */
+    text-shadow: none;
+    display: flex; /* Align text and cursor */
+    justify-content: center;
+    align-items: center;
+}
+
+.ignition-cursor {
+    display: none; /* Start hidden */
+}
+
+.arm-cursor {
+    display: none; /* Start hidden */
 }
 
 /* Section Styling */
