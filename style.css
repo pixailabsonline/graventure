@@ -220,13 +220,14 @@ li:hover::before {
     display: block; 
     max-width: 750px;
     text-align: center; /* Center the container */
+    position: relative; /* Needed for potential absolute cursor positioning */
 }
 
-.hero h2.hero-tagline #typing-text {
-    white-space: pre-wrap; 
-    display: block; /* Force block display for lines */
-    text-align: center; /* Center text within the block */
-    /* margin: 0 auto; Remove, parent handles centering */
+/* Style for dynamically created lines */
+.tagline-line {
+    display: block; /* Each line is a block */
+    text-align: center; /* Center text within the line */
+    min-height: 1.5em; /* Ensure space for cursor */
 }
 
 .cursor {
@@ -236,7 +237,8 @@ li:hover::before {
     background-color: #e0e0e0;
     margin-left: 5px;
     animation: blink 1s step-end infinite;
-    vertical-align: middle;
+    vertical-align: middle; /* Adjust as needed */
+    /* Consider absolute positioning if inline doesn't work */
 }
 
 @keyframes blink {
