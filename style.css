@@ -1,501 +1,551 @@
+/* style.css */
+
 /* General Styles */
 body {
-    font-family: 'Source Sans Pro', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #050507; /* Slightly darker base */
-    color: #e0e0e0; /* Light gray text */
-    line-height: 1.6;
-    transition: background-color 0.3s ease;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #050507;
+  color: #e0e0e0;
+  line-height: 1.6;
+  transition: background-color 0.3s ease;
 }
 
 .container {
-    width: 90%; /* Slightly wider for better spacing */
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 50px 20px; /* Increased vertical padding */
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 50px 20px;
 }
 
 h1, h2, h3 {
-    font-family: 'Exo 2', sans-serif;
-    font-weight: 700; /* Slightly less bold for cleaner look */
-    margin-bottom: 1.2rem;
-    color: #ffffff; /* White headings */
-    letter-spacing: 0.5px;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  color: #ffffff;
+  letter-spacing: 0.5px;
 }
 
 h1 {
-    font-size: 3.2rem;
-    font-weight: 900; /* Keep h1 very bold */
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 0.8rem;
+  font-size: 3.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.8rem;
 }
 
 h2 {
-    font-size: 2.2rem;
-    margin-bottom: 1.8rem;
-    /* Gradient Border */
-    border-bottom: 3px solid transparent;
-    background: linear-gradient(to right, #007bff, #00aaff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    border-image: linear-gradient(to right, #007bff, #00aaff) 1;
-
-    padding-bottom: 0.8rem;
-    display: inline-block;
+  font-size: 2.2rem;
+  margin-bottom: 1.8rem;
+  border-bottom: 3px solid transparent;
+  background: linear-gradient(to right, #007bff, #00aaff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  border-image: linear-gradient(to right, #007bff, #00aaff) 1;
+  padding-bottom: 0.8rem;
+  display: inline-block;
 }
 
 h3 {
-    font-size: 1.7rem;
-    font-weight: 700;
+  font-size: 1.7rem;
+  font-weight: 700;
 }
 
 p {
-    margin-bottom: 1.2rem;
-    font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
 }
 
 a {
-    /* Gradient Text for links */
-    background: linear-gradient(to right, #007bff, #00aaff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    text-decoration: none;
-    transition: opacity 0.2s ease;
+  background: linear-gradient(to right, #007bff, #00aaff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
 a:hover {
-    opacity: 0.8; /* Slightly fade on hover */
+  opacity: 0.85;
 }
 
 ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 li {
-    margin-bottom: 0.8rem;
-    padding-left: 1.5em;
-    position: relative;
+  margin-bottom: 0.8rem;
+  padding-left: 1.5em;
+  position: relative;
 }
 
 li::before {
-    content: '\2023'; /* Use a bullet point character • */
-    position: absolute;
-    left: 0;
-    /* Gradient Bullet */
-    background: linear-gradient(to bottom, #007bff, #00aaff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    font-weight: bold;
-    transition: transform 0.2s ease;
-    font-size: 1.2em;
-    line-height: 1;
+  content: '\2023';
+  position: absolute;
+  left: 0;
+  background: linear-gradient(to bottom, #007bff, #00aaff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+  font-size: 1.2em;
+  line-height: 1;
 }
 
 li:hover::before {
-    transform: scale(1.2); /* Subtle scale on hover */
+  transform: scale(1.15);
 }
 
-/* Hero Section - Enhanced CSS Animation */
+/* Hero Section - Animated Background */
 .hero {
-    /* Layer 1: Slow rotating base gradient */
-    background: linear-gradient(
-        110deg,
-        #0a0a0c 20%,
-        rgba(0, 86, 179, 0.1) 50%,
-        #0a0a0c 80%
-    );
-    background-size: 300% 300%;
-    animation: rotateGradient 35s ease infinite;
+  background: linear-gradient(
+    110deg,
+    #0a0a0c 20%,
+    rgba(0, 86, 179, 0.1) 50%,
+    #0a0a0c 80%
+  );
+  background-size: 300% 300%;
+  animation: rotateGradient 35s ease infinite;
 
-    text-align: center;
-    padding: 100px 0 80px;
-    position: relative; /* Needed for pseudo-elements */
-    overflow: hidden; /* Hide overflowing animated elements */
-    border-bottom: none; /* Remove static border */
+  text-align: center;
+  padding: 100px 0 80px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: none;
 }
 
-/* Layer 2: Drifting/Fading Glows */
 .hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    z-index: 1; /* Behind content */
-    background-image: 
-        radial-gradient(circle at 15% 25%, rgba(0, 123, 255, 0.15), transparent 30%),
-        radial-gradient(circle at 80% 40%, rgba(0, 170, 255, 0.1), transparent 25%),
-        radial-gradient(circle at 50% 80%, rgba(0, 123, 255, 0.12), transparent 20%);
-    background-size: 250% 250%, 200% 200%, 180% 180%;
-    animation: moveGlows 30s linear infinite alternate;
-    opacity: 0.7;
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1;
+  background-image:
+    radial-gradient(circle at 15% 25%, rgba(0, 123, 255, 0.15), transparent 30%),
+    radial-gradient(circle at 80% 40%, rgba(0, 170, 255, 0.1), transparent 25%),
+    radial-gradient(circle at 50% 80%, rgba(0, 123, 255, 0.12), transparent 20%);
+  background-size: 250% 250%, 200% 200%, 180% 180%;
+  animation: moveGlows 30s linear infinite alternate;
+  opacity: 0.7;
 }
 
-/* Layer 3: Subtle Noise/Texture Overlay */
 .hero::after {
-    content: '';
-    position: absolute;
-    top: -50%; left: -50%; /* Cover area larger than viewport */
-    width: 200%; height: 200%;
-    z-index: 2; /* Closer to content, but still behind */
-    /* Simulating noise with a very fine repeating gradient */
-    background-image: repeating-linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.01), 
-        rgba(255, 255, 255, 0.01) 1px,
-        transparent 1px,
-        transparent 3px /* Adjust spacing for density */
-    );
-    animation: subtleNoise 40s linear infinite;
-    opacity: 0.5; /* Keep it very faint */
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  z-index: 2;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.01),
+    rgba(255, 255, 255, 0.01) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  animation: subtleNoise 40s linear infinite;
+  opacity: 0.5;
 }
 
 .hero .container {
-    position: relative; /* Ensure content stays above pseudo-elements */
-    z-index: 3; /* Above all background layers */
+  position: relative;
+  z-index: 3;
 }
 
-/* Keyframes for Layer 1 */
 @keyframes rotateGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Keyframes for Layer 2 */
 @keyframes moveGlows {
-    0% { 
-        background-position: 0% 0%, 100% 100%, 50% 50%;
-        opacity: 0.6;
-    }
-    50% {
-        opacity: 0.8;
-    }
-    100% { 
-        background-position: 100% 100%, 0% 0%, 75% 25%; 
-        opacity: 0.6;
-    }
+  0% {
+    background-position: 0% 0%, 100% 100%, 50% 50%;
+    opacity: 0.6;
+  }
+  50% { opacity: 0.82; }
+  100% {
+    background-position: 100% 100%, 0% 0%, 75% 25%;
+    opacity: 0.6;
+  }
 }
 
-/* Keyframes for Layer 3 */
 @keyframes subtleNoise {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(-10%, -10%); } /* Slow drift */
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-10%, -10%); }
 }
 
-.hero h1 {
-    color: #ffffff;
-    text-shadow: none;
-}
-
-/* REMOVE generic .hero h2 styles entirely */
-/*
-.hero h2 {
-    font-size: 1.6rem; 
-    font-weight: 400; 
-    font-family: 'Source Sans Pro', sans-serif; 
-    line-height: 1.5;
-    margin-bottom: 2rem;
-    color: #c0c0c0; 
-    border-bottom: none;
-    display: block;
-    max-width: 750px;
-    margin-left: auto;
-    margin-right: auto;
-}
-*/
-
+/* Hero Tagline typing container */
 .hero h2.hero-tagline {
-    /* Apply necessary styles directly */
-    font-size: 1.6rem; 
-    font-weight: 400; 
-    font-family: 'Source Sans Pro', sans-serif; 
-    line-height: 1.5;
-    margin: 0 auto 2rem auto; /* Center block and add bottom margin */
-    color: #c0c0c0; 
-    display: block; 
-    max-width: 750px;
-    text-align: center; /* Center the container */
-    position: relative; /* Needed for potential absolute cursor positioning */
+  font-size: 1.6rem;
+  font-weight: 400;
+  font-family: 'Source Sans Pro', sans-serif;
+  line-height: 1.5;
+  margin: 0 auto 2rem auto;
+  color: #c0c0c0;
+  display: block;
+  max-width: 820px;
+  text-align: center;
+  position: relative;
+  border-bottom: none;
+  background: none;
+  -webkit-background-clip: initial;
 }
 
-/* Style for dynamically created lines */
 .tagline-line {
-    display: block; /* Each line is a block */
-    text-align: center; /* Center text within the line */
-    min-height: 1.5em; /* Ensure space for cursor */
+  display: block;
+  text-align: center;
+  min-height: 1.5em;
 }
 
 .cursor {
-    display: inline-block;
-    width: 10px;
-    height: 1.3em;
-    background-color: #e0e0e0;
-    margin-left: 5px;
-    animation: blink 1s step-end infinite;
-    vertical-align: middle; /* Adjust as needed */
-    /* Consider absolute positioning if inline doesn't work */
+  display: inline-block;
+  width: 10px;
+  height: 1.3em;
+  background-color: #e0e0e0;
+  margin-left: 5px;
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
 }
 
 @keyframes blink {
-    from, to { background-color: transparent; }
-    50% { background-color: #e0e0e0; } /* Visible state */
+  from, to { background-color: transparent; }
+  50% { background-color: #e0e0e0; }
 }
 
 .hero p {
-    max-width: 700px;
-    margin: 1rem auto;
-    font-size: 1.1rem;
-    color: #d0d0d0;
+  max-width: 860px;
+  margin: 1rem auto;
+  font-size: 1.1rem;
+  color: #d0d0d0;
 }
 
 .hero p.arm {
-    min-height: 1.5em; /* Ensure space while empty */
-    /* Inherits font styles, color, etc. Ensure it matches the original look */
-    font-family: 'Exo 2', sans-serif;
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #ffffff;
-    margin-top: 2.5rem;
-    text-shadow: none;
-    display: flex; /* Align text and cursor */
-    justify-content: center;
-    align-items: center;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.ignition-cursor {
-    display: none; /* Start hidden */
+.ignition-cursor { display: none; }
+.arm-cursor { display: none; }
+
+/* Hero buttons */
+.hero-actions {
+  margin-top: 2.2rem;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.arm-cursor {
-    display: none; /* Start hidden */
+.hero-footnote {
+  margin-top: 1.6rem;
+  font-size: 0.95rem;
+  color: #bdbdbd;
 }
 
 /* Section Styling */
 section {
-    padding: 70px 0; /* Slightly more padding */
-    transition: background-color 0.4s ease;
+  padding: 70px 0;
+  transition: background-color 0.4s ease;
 }
 
-.mission {
-    background-color: #050507; /* Base dark */
+.mission { background-color: #050507; }
+.inside { background-color: #0a0a0c; }
+.philosophy { background-color: #050507; }
+
+/* Board Questions + Founding sections */
+.board-questions { background-color: #0a0a0c; }
+.founding { background-color: #050507; }
+
+/* Callouts / notes */
+.callout {
+  margin-top: 1.4rem;
+  padding: 14px 16px;
+  border-left: 4px solid transparent;
+  border-image: linear-gradient(to bottom, #007bff, #00aaff) 1;
+  background: rgba(0, 123, 255, 0.06);
+  border-radius: 6px;
 }
 
-.mission ul li a {
-    font-weight: 700;
+.small-note {
+  margin-top: 1.8rem;
+  color: #bdbdbd;
+  font-size: 0.98rem;
 }
 
-.inside {
-    background-color: #0a0a0c; /* Slightly Lighter Dark */
+.subhead {
+  color: #d6d6d6;
+  font-size: 1.15rem;
+  margin-top: -0.5rem;
 }
 
-.philosophy {
-    background-color: #050507; /* Base dark */
+.muted {
+  color: #c6c6c6;
+  font-size: 1.02rem;
 }
 
-.philosophy strong {
-    /* Gradient for strong text */
-    background: linear-gradient(to right, #007bff, #00aaff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    font-weight: 700;
-    text-shadow: none;
+/* Cards/Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 1.8rem;
 }
 
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 22px;
+  backdrop-filter: blur(6px);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+
+/* Quote block */
 .philosophy .quote {
-    font-style: normal;
-    font-size: 1.4rem;
-    font-weight: 700;
-    font-family: 'Exo 2', sans-serif;
-    color: #ffffff;
-    text-align: center;
-    margin: 3rem auto 0;
-    /* Gradient Border */
-    border-left: 5px solid transparent;
-    border-image: linear-gradient(to bottom, #007bff, #00aaff) 1;
-    padding: 0.5rem 1.5rem;
-    display: block;
-    max-width: 600px;
+  font-style: normal;
+  font-size: 1.35rem;
+  font-weight: 700;
+  font-family: 'Exo 2', sans-serif;
+  color: #ffffff;
+  text-align: center;
+  margin: 2.6rem auto 0;
+  border-left: 5px solid transparent;
+  border-image: linear-gradient(to bottom, #007bff, #00aaff) 1;
+  padding: 0.8rem 1.5rem;
+  display: block;
+  max-width: 820px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
 }
 
-/* Call to Action (CTA) Section */
-.cta {
-    /* Gradient Background */
-    background: linear-gradient(45deg, #007bff, #0056b3); /* Blue gradient */
-    color: #ffffff;
-    text-align: center;
-    padding: 80px 0;
+/* Board Questions layout */
+.questions {
+  margin-top: 1.8rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
 }
 
-.cta h2 {
-    color: #ffffff;
-    border-bottom: none;
-    font-size: 2.4rem;
-    line-height: 1.3;
-    text-shadow: none;
-    margin-bottom: 1rem;
+.q {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
 }
 
-.cta h3 {
-    color: #e0e0e0; /* Light text */
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 400;
-    font-size: 1.3rem;
-    margin-top: 0.5rem;
-    margin-bottom: 2.5rem;
+.q-num {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 900;
+  color: #ffffff;
+  background: linear-gradient(45deg, rgba(0, 123, 255, 0.55), rgba(0, 170, 255, 0.45));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  flex: 0 0 auto;
 }
 
+.q-body h3 {
+  margin: 0 0 0.45rem 0;
+  font-size: 1.22rem;
+}
+
+.q-body p {
+  margin: 0;
+  color: #cfcfcf;
+  font-size: 1.02rem;
+}
+
+/* Buttons */
 .cta-button {
-    display: inline-block;
-    background: #ffffff;
-    color: #007bff;
-    padding: 16px 40px;
-    font-family: 'Exo 2', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    border-radius: 5px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
-    border: 2px solid transparent;
+  display: inline-block;
+  background: #ffffff;
+  color: #007bff;
+  padding: 16px 40px;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  border: 2px solid transparent;
 }
 
 .cta-button:hover {
-    background: transparent;
-    color: #ffffff;
-    border: 2px solid #ffffff;
-    transform: translateY(-3px) scale(1.03); /* Lift and slightly enlarge */
-    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+.secondary-button {
+  display: inline-block;
+  padding: 16px 40px;
+  border-radius: 5px;
+  border: 2px solid rgba(255,255,255,0.35);
+  color: #ffffff;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.25s ease;
+  background: transparent;
+}
+
+.secondary-button:hover {
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.board-cta {
+  margin-top: 2rem;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* CTA Section */
+.cta {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: #ffffff;
+  text-align: center;
+  padding: 80px 0;
+}
+
+.cta h2 {
+  color: #ffffff;
+  border-bottom: none;
+  font-size: 2.4rem;
+  line-height: 1.3;
+  text-shadow: none;
+  margin-bottom: 1rem;
+  background: none;
+  -webkit-background-clip: initial;
+}
+
+.cta h3 {
+  color: #e0e0e0;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.cta-footnote {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.9);
 }
 
 /* Footer */
 footer {
-    background-color: #050505; /* Even darker footer */
-    color: #aaa;
-    text-align: center;
-    padding: 40px 0;
-    font-size: 0.9rem;
-    border-top: 1px solid #222; /* Subtle top border */
+  background-color: #050505;
+  color: #aaa;
+  text-align: center;
+  padding: 40px 0;
+  font-size: 0.9rem;
+  border-top: 1px solid #222;
 }
 
 footer p {
-    margin-bottom: 0.5rem;
-    font-size: 0.95rem;
-    color: #bbb;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #bbb;
 }
 
 footer a {
-    color: #007bff; /* Electric Blue Accent */
+  color: #007bff;
 }
 
 footer a:hover {
-    color: #4da3ff; /* Lighter blue */
+  color: #4da3ff;
 }
 
 footer .tagline {
-    font-weight: 700;
-    color: #e0e0e0;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
-    font-size: 1rem;
+  font-weight: 700;
+  color: #e0e0e0;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
 }
 
 /* Animation Styling */
 .animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px); /* Start slightly lower */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .animate-on-scroll.visible {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Responsive Design Adjustments */
+/* Responsive */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2.6rem;
-    }
-    .hero h2 {
-        font-size: 1.3rem;
-    }
-    h2 {
-        font-size: 1.9rem;
-    }
-    h3 {
-        font-size: 1.5rem;
-    }
-    .container {
-        padding: 40px 15px;
-    }
-    .hero {
-        padding: 80px 0 60px;
-    }
-    .cta {
-        padding: 60px 0;
-    }
-    .cta h2 {
-        font-size: 2rem;
-    }
-    .cta h3 {
-        font-size: 1.2rem;
-    }
-    .cta-button {
-        padding: 14px 35px;
-        font-size: 1rem;
-    }
-    .philosophy .quote {
-        font-size: 1.2rem;
-        padding: 0.5rem 1rem;
-    }
+  h1 { font-size: 2.6rem; }
+  h2 { font-size: 1.9rem; }
+  h3 { font-size: 1.5rem; }
+
+  .container { padding: 40px 15px; }
+  .hero { padding: 80px 0 60px; }
+
+  .grid { grid-template-columns: 1fr; }
+  .questions { grid-template-columns: 1fr; }
+
+  .cta { padding: 60px 0; }
+  .cta h2 { font-size: 2rem; }
+  .cta h3 { font-size: 1.2rem; }
+
+  .cta-button, .secondary-button {
+    padding: 14px 35px;
+    font-size: 1rem;
+  }
+
+  .philosophy .quote {
+    font-size: 1.2rem;
+    padding: 0.7rem 1rem;
+  }
 }
 
 @media (max-width: 480px) {
-    h1 {
-        font-size: 2.1rem;
-    }
-    .hero h2 {
-        font-size: 1.1rem;
-        line-height: 1.4;
-    }
-    h2 {
-        font-size: 1.6rem;
-        padding-bottom: 0.6rem;
-        margin-bottom: 1.5rem;
-    }
-    h3 {
-        font-size: 1.3rem;
-    }
-    p {
-         font-size: 1rem;
-    }
-     .hero p {
-        font-size: 1rem;
-    }
-    .hero .arm {
-        font-size: 1.1rem;
-    }
-    .philosophy .quote {
-        font-size: 1.1rem;
-    }
-    .cta h2 {
-        font-size: 1.7rem;
-    }
-     .cta h3 {
-        font-size: 1.1rem;
-    }
-    .cta-button {
-        padding: 12px 30px;
-    }
-    li {
-        padding-left: 1.2em;
-        margin-bottom: 0.6rem;
-    }
+  h1 { font-size: 2.1rem; }
+  h2 { font-size: 1.6rem; padding-bottom: 0.6rem; margin-bottom: 1.5rem; }
+  h3 { font-size: 1.3rem; }
+
+  p { font-size: 1rem; }
+  .hero p { font-size: 1rem; }
+
+  .hero p.arm { font-size: 1.08rem; }
+
+  .cta h2 { font-size: 1.7rem; }
+  .cta h3 { font-size: 1.1rem; }
+
+  .cta-button, .secondary-button { padding: 12px 30px; }
+
+  li { padding-left: 1.2em; margin-bottom: 0.6rem; }
 }
