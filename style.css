@@ -260,6 +260,33 @@ section {
 .inside { background-color: #0a0a0c; }
 .philosophy { background-color: #050507; }
 
+/* The Standard section (NEW) */
+.standard {
+  background: linear-gradient(
+    180deg,
+    #0a0a0c 0%,
+    rgba(0, 86, 179, 0.08) 50%,
+    #0a0a0c 100%
+  );
+  border-top: 1px solid rgba(0, 123, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 123, 255, 0.2);
+}
+
+.standard-cta {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.inflection {
+  color: #00aaff;
+  font-size: 0.85em;
+  font-weight: 600;
+  margin-left: 0.5em;
+}
+
 /* Board Questions + Founding sections */
 .board-questions { background-color: #0a0a0c; }
 .founding { background-color: #050507; }
@@ -530,6 +557,11 @@ footer .tagline {
     font-size: 1.2rem;
     padding: 0.7rem 1rem;
   }
+  
+  .standard-cta {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -548,4 +580,6 @@ footer .tagline {
   .cta-button, .secondary-button { padding: 12px 30px; }
 
   li { padding-left: 1.2em; margin-bottom: 0.6rem; }
+  
+  .inflection { display: block; margin-left: 0; margin-top: 0.3em; }
 }

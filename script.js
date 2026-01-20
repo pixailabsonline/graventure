@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const elementsToAnimate = document.querySelectorAll(".animate-on-scroll");
   elementsToAnimate.forEach(el => observer.observe(el));
 
-  // --- Typing effect ---
+  // --- Typing effect (faster) ---
   const taglineContainer = document.querySelector("h2.hero-tagline");
   const taglineCursorElement = document.querySelector(".tagline-cursor");
   const ignitionTypingElement = document.getElementById("ignition-typing-text");
@@ -36,14 +36,14 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   const ignitionText =
-    "Graventure defines and diagnoses Autonomous System Behaviour & Accountability Risk so organisations can evidence who authorised objectives and who owned system behaviour over time — in language that survives audit, litigation, and underwriting scrutiny.";
+    "Graventure defines and diagnoses Autonomous Accountability Risk so organisations can evidence who authorised objectives and who owned system behaviour over time — in language that survives audit, litigation, and underwriting scrutiny.";
 
   const armText =
-    "If you can’t name the owner, you don’t have governance. You have hope.";
+    "If you can't name the owner, you don't have governance. You have hope.";
 
-  const typingSpeed = 34;
-  const lineDelay = 520;
-  const initialDelay = 380;
+  const typingSpeed = 18; // Faster (was 34)
+  const lineDelay = 400;  // Slightly faster (was 520)
+  const initialDelay = 300;
 
   let lineIndex = 0;
   let charIndex = 0;
