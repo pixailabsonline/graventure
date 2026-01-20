@@ -202,6 +202,20 @@ section {
   margin-left: 0.5em;
 }
 
+.underwriting-note {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  padding: 10px 12px;
+  background: rgba(0, 123, 255, 0.08);
+  border-radius: 4px;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.underwriting-note strong {
+  color: #fff;
+}
+
 /* Grid / Cards */
 .grid {
   display: grid;
