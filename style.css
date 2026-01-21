@@ -1,5 +1,12 @@
 /* style.css */
 
+/* Box sizing fix - prevents elements from overflowing on mobile */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* General */
 html, body {
   overflow-x: hidden;
