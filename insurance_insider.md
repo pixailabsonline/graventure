@@ -1,14 +1,4 @@
----
-
-**FOR PUBLICATION**
-
----
-
-# Delegated Authority is the Risk We're Actually Insuring
-
-**Why the insurance market needs a new framework for autonomous systems**
-
----
+Delegated Authority is the Risk We're Actually Insuring
 
 Submissions increasingly include automated decision systems. They describe capability, controls, testing outcomes, model validation, failover procedures. They rarely specify whether a human approves each action or whether the system acts on its own.
 
@@ -20,33 +10,23 @@ A scalpel isn't the risk. The surgeon's authority to cut, and the hospital's dec
 
 Autonomous systems don't introduce a new category of risk. They change where authority sits, and whether that shift was disclosed.
 
----
-
-## Same capability. Radically different exposure.
-
 Consider two systems with identical capability. Both can execute trades, approve claims, or dispatch resources. The first requires human approval for each action. The second is authorised to act within defined parameters without asking.
+
+Same capability. Radically different exposure.
 
 The first system's failures are human failures. Errors in judgment, delays in response. Familiar territory. The second system's failures are authority failures. Outcomes that followed from decisions no human reviewed. That's different, and it's not always clear from the submission which one you're looking at.
 
 When the loss arrives, the question isn't whether the algorithm malfunctioned. It's whether the outcome followed from authority that was knowingly transferred.
 
----
-
-## The distinction that matters
-
 Capability describes what a system can do. Authority describes what it's allowed to do without asking.
 
-A system that waits for approval is a tool. A system authorised to act is a delegate. Underwriters know how to price tools. Delegates require a different conversation—one the market hasn't formalised.
+A system that waits for approval is a tool. A system authorised to act is a delegate. Underwriters know how to price tools. Delegates require a different conversation, one the market hasn't formalised.
 
 The slip might reference "AI-enabled operations" or "automated decision support." It rarely specifies whether the system advises, executes on approval, acts within bounds, or operates with persistent autonomy across multiple decisions.
 
 These aren't edge cases. They're the centre of the risk.
 
-**Authority transferred is authority insured.**
-
----
-
-## The claims conversation
+Authority transferred is authority insured.
 
 At claims, counsel will ask a simple question: was this level of delegated authority disclosed at placement?
 
@@ -56,38 +36,18 @@ If no, the discussion becomes whether the insured transferred authority the unde
 
 The systems are already deployed. The question is whether their authority profile entered the underwriting record or gets reconstructed later by lawyers.
 
----
-
-## A classification problem
-
 The market lacks a shared way to classify delegated authority.
 
-In practice, claims already distinguish between advisory systems, approved execution, bounded autonomy, and persistent agency—even when the submission never did. The boundaries aren't arbitrary. They follow from how liability attaches when outcomes diverge from expectations.
+In practice, claims already distinguish between advisory systems, approved execution, bounded autonomy, and persistent agency, even when the submission never did. The boundaries aren't arbitrary. They follow from how liability attaches when outcomes diverge from expectations.
 
 Some underwriters are asking better questions. But without common language, each placement reinvents the disclosure. Submissions stay inconsistent. Comparisons stay difficult. Pricing stays approximate.
 
 This isn't a technology problem. It's market infrastructure.
 
----
-
-## Looking ahead
-
 Autonomous systems will improve. Regulations will arrive. Use cases will multiply.
 
-None of that changes the underwriting fundamental: **authority transferred is authority insured.**
+None of that changes the underwriting fundamental: authority transferred is authority insured.
 
-The question for this market—not for regulators, not for technologists, but for underwriters—is whether delegated authority becomes a standard disclosure object, or remains implicit until claims counsel surfaces it.
+The question for this market, not for regulators, not for technologists, but for underwriters, is whether delegated authority becomes a standard disclosure object, or remains implicit until claims counsel surfaces it.
 
 The answer determines whether this market prices the risk it intended to accept.
-
----
-
-*Peter Idah*
-*Principal, Graventure*
-*peter.idah@graventure.com*
-
----
-
-**Word count:** ~650
-
-**Contact for queries:** peter.idah@graventure.com
