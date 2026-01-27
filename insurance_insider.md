@@ -51,3 +51,7 @@ None of that changes the underwriting fundamental: authority transferred is auth
 The question for this market, not for regulators, not for technologists, but for underwriters, is whether delegated authority becomes a standard disclosure object, or remains implicit until claims counsel surfaces it.
 
 The answer determines whether this market prices the risk it intended to accept.
+
+Peter Idah,
+Principal, Graventure
+https://www.linkedin.com/in/peteridah/
