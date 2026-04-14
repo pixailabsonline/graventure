@@ -142,18 +142,6 @@ a:hover { opacity: 0.72; }
   color: #060d1a;
 }
 
-.mode-bar-home {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-decoration: none;
-  margin-right: 0.5rem;
-  transition: color 0.18s;
-}
-.mode-bar-home:hover { color: var(--accent); }
-
 /* Pulsing signal dot */
 .mode-signal {
   margin-left: auto;
@@ -220,6 +208,17 @@ a:hover { opacity: 0.72; }
 }
 .hero-contact a:hover { color: var(--accent); }
 .dot { color: var(--border-s); }
+
+.hero-community {
+  margin-top: 0.85rem;
+  font-size: 0.83rem;
+  color: var(--muted);
+}
+
+.hero-community strong {
+  color: var(--text);
+  font-weight: 600;
+}
 
 .btn-primary {
   display: inline-block;
