@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peter Idah — Control Planes for AI That Acts</title>
+    <meta name="description" content="Peter Idah designs production-grade agentic AI control planes with governance, authority, and audit-evidence built in." />
+    <meta property="og:title" content="Peter Idah — Control Planes for AI That Acts" />
+    <meta property="og:description" content="Agentic AI governance, regulated delivery, and production reliability across finance, insurance, and enterprise." />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="mode-exec">
+
+    <!-- Sticky authority bar -->
+    <div class="mode-bar" role="banner">
+      <a class="mode-bar-home" href="https://graventure.com" aria-label="Back to Graventure">Graventure</a>
+      <div class="mode-toggle" role="tablist" aria-label="View mode">
+        <button class="mode-btn is-active" data-mode="exec" role="tab" aria-selected="true">Executive</button>
+        <button class="mode-btn" data-mode="eng" role="tab" aria-selected="false">Engineering</button>
+      </div>
+      <div class="mode-signal" aria-hidden="true"></div>
+    </div>
+
+    <!-- Hero -->
+    <header class="hero wrap reveal">
+      <p class="eyebrow">St Albans · London, UK</p>
+      <h1>Peter Idah</h1>
+      <p class="tagline">Control Planes for AI That Acts.</p>
+
+      <p class="hero-sub" data-exec>
+        I design the governance layer that makes autonomous AI deployable, auditable, and defensible in regulated and high-consequence environments. Leadership teams engage me to close the accountability gap before it becomes a board problem.
+      </p>
+      <p class="hero-sub is-hidden" data-eng>
+        I architect production agentic systems with delegated authority, identity-bound execution, D0–D3 policy enforcement, evidence packs, eval and drift monitoring, and kill-switch controls. The control plane is the product.
+      </p>
+
+      <div class="hero-contact">
+        <a href="mailto:peter.idah@gmail.com">peter.idah@gmail.com</a>
+        <span class="dot" aria-hidden="true">·</span>
+        <span>+44 7349 159972</span>
+        <span class="dot" aria-hidden="true">·</span>
+        <a href="https://www.linkedin.com/in/peteridah/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+
+      <a class="btn-primary" href="mailto:peter.idah@gmail.com?subject=Agentic%20AI%20Engagement">Get in touch</a>
+    </header>
+
+    <main>
+
+      <!-- Thesis -->
+      <section class="section wrap reveal">
+        <div class="section-kicker">Insight</div>
+        <blockquote data-exec>
+          Agentic AI is moving faster than governance. Most organisations deploying AI agents have no clear map of what actions are authorised, who is accountable, or how to demonstrate that to a regulator. That gap — between capability and control — is where I work.
+        </blockquote>
+        <blockquote class="is-hidden" data-eng>
+          The problem is not building agentic systems. It is building them with provable authority boundaries. Without identity-bound delegation, runtime kill switches, and evidence-pack outputs at decision points, you have a capable but ungovernable system. That is where architectures break down in regulated environments.
+        </blockquote>
+      </section>
+
+      <!-- Selected Work -->
+      <section class="section wrap reveal">
+        <div class="section-kicker">Deployments</div>
+        <h2>Selected Work</h2>
+        <div class="work-grid">
+
+          <article class="work-card">
+            <div class="work-card-head">
+              <span class="work-tag">AI Governance</span>
+              <span class="work-dot" aria-hidden="true"></span>
+            </div>
+            <h3>D0–D3 Delegated-Authority Standard</h3>
+            <p data-exec>
+              Designed an authority framework for autonomous insurance workflows that maps every AI action to a delegation level, blocks out-of-authority attempts at bind, and produces CRO-defensible outputs. Zero unauthorised executions in reference runs.
+            </p>
+            <p class="is-hidden" data-eng>
+              Implemented as a real-time control plane at decision and bind points. Agent-spawn-agent lineage controls prevent delegation-depth violations. OIDC/JWKS auth, PII stripping, prompt-injection guards, evidence-pack export, eval history, weekly drift monitoring, D2 kill switch. Built with Python, FastAPI, LangGraph.
+            </p>
+            <ul class="work-metrics">
+              <li>0 unauthorised executions in reference runs</li>
+              <li>CRO and underwriter-defensible decision outputs</li>
+              <li>Out-of-authority attempts blocked at bind</li>
+            </ul>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card-head">
+              <span class="work-tag">Platform Operations</span>
+              <span class="work-dot" aria-hidden="true"></span>
+            </div>
+            <h3>MUFG Global Cloud Operations</h3>
+            <p data-exec>
+              Led AWS platform operations protecting regulated asset-servicing workloads across five jurisdictions. Set up an SRE practice, managed an 8-engineer global team, and introduced operating controls that improved delivery confidence and reduced incident risk.
+            </p>
+            <p class="is-hidden" data-eng>
+              Multi-region EKS, Terraform, GitLab CI/CD, Datadog-led observability. Embedded SRE operating model: reliability standards, incident routines, change controls across AWS and Azure. 8-engineer team across UK, Singapore, Ireland, Cyprus, Canada.
+            </p>
+            <ul class="work-metrics">
+              <li>5-jurisdiction regulated cloud estate</li>
+              <li>8-engineer global team</li>
+              <li>SRE practice built and embedded</li>
+            </ul>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card-head">
+              <span class="work-tag">Production AI</span>
+              <span class="work-dot" aria-hidden="true"></span>
+            </div>
+            <h3>MCP Server + ChatGPT App Platform</h3>
+            <p data-exec>
+              Shipped a live production AI platform connecting ChatGPT to create/update/retrieve workflows via a custom MCP server. Secure OAuth, reliable automation jobs, and a user-facing application live in production.
+            </p>
+            <p class="is-hidden" data-eng>
+              Production MCP server at api.weekvault.app/mcp. Supabase + Google OAuth token lifecycle. FastAPI backend, scheduled automation jobs, retries and timeouts, full CRUD workflow execution. Built and shipped including ChatGPT app listing.
+            </p>
+            <ul class="work-metrics">
+              <li><a href="https://weekvault.app" target="_blank" rel="noreferrer">weekvault.app</a> — live in production</li>
+              <li>Secure OAuth + token lifecycle</li>
+              <li>Custom MCP server</li>
+            </ul>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card-head">
+              <span class="work-tag">Enterprise Scale</span>
+              <span class="work-dot" aria-hidden="true"></span>
+            </div>
+            <h3>M&amp;S SRE Operating Direction</h3>
+            <p data-exec>
+              Led SRE and DevOps operating direction across 60+ engineering teams during a major enterprise transformation. Standardised delivery controls, production ownership, and reliability practices across fragmented delivery groups.
+            </p>
+            <p class="is-hidden" data-eng>
+              Programme-level operating direction across 60+ teams. Standardised reliability tooling, production-ownership accountabilities, and delivery controls in a large-scale transformation. Reduced fragmentation, improved execution consistency.
+            </p>
+            <ul class="work-metrics">
+              <li>60+ engineering teams</li>
+              <li>Enterprise transformation programme</li>
+              <li>Standardised reliability operating model</li>
+            </ul>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Career -->
+      <section class="section wrap reveal">
+        <div class="section-kicker">Record</div>
+        <h2>Career</h2>
+        <div class="timeline">
+
+          <div class="tl-entry">
+            <div class="tl-meta">
+              <span class="tl-role">Principal — Graventure</span>
+              <span class="tl-date">Dec 2025 – Present</span>
+            </div>
+            <p data-exec>Agentic AI governance advisory. Designed D0–D3 delegated-authority standard for autonomous insurance claims. Worked directly with risk, compliance, and legal stakeholders on accountable AI deployment.</p>
+            <p class="is-hidden" data-eng>D0–D3 control plane design and implementation. Agent-spawn-agent lineage controls, multi-agent authority boundaries, PII stripping, prompt-injection guards, evidence-pack outputs, kill switch. Python, FastAPI, LangGraph.</p>
+          </div>
+
+          <div class="tl-entry">
+            <div class="tl-meta">
+              <span class="tl-role">Fractional CTO (AI) — AI Creation Labs</span>
+              <span class="tl-date">2025 – Present</span>
+            </div>
+            <p data-exec>CTO-level leadership on AI strategy, delivery guardrails, platform architecture, and operational readiness for production AI adoption.</p>
+            <p class="is-hidden" data-eng>MCP server and ChatGPT app delivery. Build-vs-buy decisions, platform controls, safe adoption patterns for AI-enabled workflows. Supabase, FastAPI, Google OAuth.</p>
+          </div>
+
+          <div class="tl-entry">
+            <div class="tl-meta">
+              <span class="tl-role">AI Advisor — LuxCity.tech (PropTech)</span>
+              <span class="tl-date">2025 – Present</span>
+            </div>
+            <p data-exec>AI product strategy, phased delivery plans, pragmatic governance for production AI adoption. Translated AI opportunities into delivery plans with clear risk ownership.</p>
+            <p class="is-hidden" data-eng>LLM architecture and rollout sequencing. Risk ownership mapping, implementation constraints, operational controls for AI-enabled PropTech product.</p>
+          </div>
+
+          <div class="tl-entry">
+            <div class="tl-meta">
+              <span class="tl-role">AWSOps Lead, Senior Director — MUFG Investor Services</span>
+              <span class="tl-date">Nov 2024 – Dec 2025</span>
+            </div>
+            <p data-exec>Led multi-region cloud operations in regulated financial services across 5 jurisdictions. Built SRE practice, managed 8-engineer global team, improved delivery confidence and operational controls.</p>
+            <p class="is-hidden" data-eng>Terraform, EKS, GitLab CI/CD, Datadog observability. SRE operating model: reliability standards, incident routines, change controls. AWS and Azure across UK, Singapore, Ireland, Cyprus, Canada.</p>
+          </div>
+
+          <div class="tl-entry">
+            <div class="tl-meta">
+              <span class="tl-role">AI Engineer — PixAILabs.com</span>
+              <span class="tl-date">Jun – Nov 2024</span>
+            </div>
+            <p data-exec>Built and launched a production multi-model AI agent platform for video and content-generation workflows.</p>
+            <p class="is-hidden" data-eng>OpenAI, Claude, Gemini in production. Python orchestration, LLMOps-style monitoring and tracing. Firebase integration. Multi-model agent delivery.</p>
+          </div>
+
+          <div class="tl-entry">
+            <div class="tl-meta">
+              <span class="tl-role">Senior Platform Engineer — Novata</span>
+              <span class="tl-date">Mar – Jun 2024</span>
+            </div>
+            <p data-exec>Platform delivery and reliability improvement for regulated ESG data workloads.</p>
+            <p class="is-hidden" data-eng>EKS, GitHub Actions, Harness, Datadog. CI/CD and observability uplift for regulated ESG data estate.</p>
+          </div>
+
+          <div class="tl-entry">
+            <div class="tl-meta">
+              <span class="tl-role">Senior Golang Developer / SRE — ONS</span>
+              <span class="tl-date">Sep 2021 – Mar 2023</span>
+            </div>
+            <p data-exec>Delivered identity and data services for ONS Census under GDS standards. Sensitive government environment with strict data-handling and security requirements.</p>
+            <p class="is-hidden" data-eng>Go APIs, Cognito, Aurora PostgreSQL, Lambda, MongoDB, DocumentDB. Terraform, Ansible, Nomad, Consul, Vault, Docker, Concourse. Census-scale government data service.</p>
+          </div>
+
+          <div class="tl-entry">
+            <div class="tl-meta">
+              <span class="tl-role">SRE / DevOps Lead — M&amp;S</span>
+              <span class="tl-date">Jun – Aug 2021</span>
+            </div>
+            <p data-exec>Led SRE and DevOps operating direction across 60+ engineering teams during a major enterprise transformation programme.</p>
+            <p class="is-hidden" data-eng>Programme-level reliability standards, tooling standardisation, production-ownership accountabilities, and delivery controls across 60+ fragmented engineering teams.</p>
+          </div>
+
+          <div class="tl-entry">
+            <div class="tl-meta">
+              <span class="tl-role">Senior SRE, HCP — HashiCorp</span>
+              <span class="tl-date">Nov 2019 – Mar 2021</span>
+            </div>
+            <p data-exec>First SRE in EMEA for HashiCorp Cloud Platform. Owned Consul and Vault data-plane reliability across AWS and Azure.</p>
+            <p class="is-hidden" data-eng>Consul/Vault HCP data-plane SRE. Go production integrations, observability, game-day resilience exercises, dependency failure handling. First EMEA hire into the SRE function.</p>
+          </div>
+
+          <div class="tl-entry">
+            <div class="tl-meta">
+              <span class="tl-role">Senior DevOps Contractor — Various UK Clients</span>
+              <span class="tl-date">2011 – 2019</span>
+            </div>
+            <p data-exec>Enterprise and public-sector delivery across Sony PlayStation (400k concurrent players), Pearson, VISA Europe, UK Government Digital Services, Ministry of Justice, Tesco Bank, Allianz.</p>
+            <p class="is-hidden" data-eng>AWS EKS launch platform for Sony PlayStation (400k CCU). Go and Python platform tooling, Kafka-backed services, analytics components at Pearson. VISA V.me regulated payments DevOps. GDS CI/CD and secure automation. MOJ bootstrap tooling contributions.</p>
+          </div>
+
+          <div class="tl-entry">
+            <div class="tl-meta">
+              <span class="tl-role">Senior Engineering Consultant — Red Hat</span>
+              <span class="tl-date">Nov 2010 – Sep 2011</span>
+            </div>
+            <p data-exec>Delivered regulated enterprise platform programmes for Tesco Bank and Allianz Insurance.</p>
+            <p class="is-hidden" data-eng>Linux platform controls, clustering, automation, and production-estate delivery for Tesco Bank and Allianz in regulated environments. RHCE-certified delivery.</p>
+          </div>
+
+          <div class="tl-entry">
+            <div class="tl-meta">
+              <span class="tl-role">Infrastructure Engineering — BT Radianz · UNODC</span>
+              <span class="tl-date">2006 – 2010</span>
+            </div>
+            <p>Secure low-latency infrastructure for global financial institutions (BT Radianz). Secured and operated Linux infrastructure across 36 countries (UNODC).</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Environments -->
+      <section class="section wrap reveal">
+        <div class="section-kicker">Context</div>
+        <h2>Environments Operated</h2>
+        <div class="env-grid">
+          <div class="env-row">
+            <span class="env-sector">Financial Services</span>
+            <span class="env-orgs">MUFG · Tesco Bank · VISA · BT Radianz</span>
+          </div>
+          <div class="env-row">
+            <span class="env-sector">Insurance</span>
+            <span class="env-orgs">Allianz · Graventure (agentic claims governance)</span>
+          </div>
+          <div class="env-row">
+            <span class="env-sector">Government &amp; Public Sector</span>
+            <span class="env-orgs">ONS Census · GDS · Ministry of Justice · UNODC</span>
+          </div>
+          <div class="env-row">
+            <span class="env-sector">Enterprise Platform</span>
+            <span class="env-orgs">M&amp;S · Sony PlayStation · Pearson · HashiCorp</span>
+          </div>
+          <div class="env-row">
+            <span class="env-sector">AI &amp; Emerging Tech</span>
+            <span class="env-orgs">Graventure · PixAILabs · AI Creation Labs · LuxCity</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Engagement model -->
+      <section class="section wrap reveal">
+        <div class="section-kicker">Engagement</div>
+        <h2>How to Work Together</h2>
+        <div class="engage-grid">
+          <div class="engage-card">
+            <h3>Advisory</h3>
+            <p>Strategic direction on agentic AI adoption: governance framework design, authority mapping, executive communication, risk framing, and board-readiness for regulated environments.</p>
+          </div>
+          <div class="engage-card">
+            <h3>Fractional CTO</h3>
+            <p>CTO-level ownership of AI strategy, platform architecture, team direction, and delivery governance — without the full-time headcount. Suited to scale-up and regulated enterprise.</p>
+          </div>
+          <div class="engage-card">
+            <h3>Delivery</h3>
+            <p>Hands-on control plane design and build: agentic AI architecture, cloud platform work, SRE practice setup, and production release governance in regulated contexts.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Signal -->
+      <section class="section wrap reveal">
+        <div class="section-kicker">Signal</div>
+        <div class="signal-grid">
+          <a class="signal-card" href="https://weekvault.app" target="_blank" rel="noreferrer">
+            <span class="signal-card-label">Live in Production</span>
+            <span class="signal-card-title">weekvault.app</span>
+            <span class="signal-card-desc">Production MCP server and ChatGPT app for AI-connected workflows</span>
+          </a>
+          <div class="signal-card">
+            <span class="signal-card-label">Community</span>
+            <span class="signal-card-title">London Kubernetes Meetup</span>
+            <span class="signal-card-desc">Co-founder, 4,000+ members · Member, Agentics London Group</span>
+          </div>
+          <a class="signal-card" href="https://www.youtube.com/watch?v=9d6jniMryp8" target="_blank" rel="noreferrer">
+            <span class="signal-card-label">Speaking</span>
+            <span class="signal-card-title">Pearson Education Platform</span>
+            <span class="signal-card-desc">Live training delivery — YouTube</span>
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer wrap reveal">
+      <p data-exec>Available for agentic AI governance, platform strategy, and regulated delivery mandates.</p>
+      <p class="is-hidden" data-eng>Available for control plane architecture, agentic AI delivery, and SRE / platform engineering leadership.</p>
+      <div class="footer-actions">
+        <a class="btn-primary" href="mailto:peter.idah@gmail.com?subject=Agentic%20AI%20Engagement">Get in touch</a>
+        <a class="btn-secondary" href="https://www.linkedin.com/in/peteridah/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
