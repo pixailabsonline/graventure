@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Enterprise Agentic Control Architecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="deck-stage.js"></script>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+<!-- 01 COVER -->
+<section data-label="Cover">
+  <div class="cover">
+    <div class="meta-top">
+      <div style="display:flex;align-items:center;gap:14px"><img src="assets/graventure-logo.png" alt="Graventure"/><span style="color:var(--text-2)">Reference Architecture</span></div>
+      <span>v3 &nbsp;·&nbsp; April 2026</span>
+    </div>
+    <div class="main">
+      <div class="kicker-row"><span>Pressure-Tested</span><span class="dot"></span><span>Research-Verified</span></div>
+      <h1><span class="br">Enterprise Agentic</span><span class="br">Control <span class="hl">Architecture</span></span></h1>
+      <div class="sub">A full reference model for production agentic systems — mapping mature standards, custom engineering, and the gaps the industry has not yet solved.</div>
+    </div>
+    <div class="foot"><span>NIST AI RMF &nbsp;·&nbsp; OWASP ASI01–10 &nbsp;·&nbsp; Singapore MGF &nbsp;·&nbsp; EU AI Act &nbsp;·&nbsp; SLSA v1.2 &nbsp;·&nbsp; OpenTelemetry GenAI</span><span>01 / 35</span></div>
+  </div>
+</section>
+
+<!-- 02 SCOPE -->
+<section data-label="Scope and Reading Posture">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§0</span> &nbsp;&nbsp;Scope, Limitations, Regulatory Context</span><span>Read First</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">Reading Posture</div>
+    <div class="title">This document leads with what it cannot solve.</div>
+    <div class="subtitle">If a hostile reviewer finds nothing to attack here, they will look harder elsewhere. Give them the ground early.</div>
+    <div class="body" style="margin-top:52px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;">
+      <div><div class="rule-rule">What this is</div>
+        <div class="body-text" style="margin-top:6px;">A pressure-tested control architecture combining mature standards, custom engineering patterns, and openly unsolved gaps into one diagnostic model for enterprise agentic systems.</div></div>
+      <div><div class="rule-rule">How to use it</div>
+        <div class="body-text" style="margin-top:6px;">Technically challengeable by design. Explicit about assumptions. Useful as a diagnostic against real deployments — not as a formal standard or compliance checkbox.</div></div>
+    </div>
+    <div class="footer"><span>Enterprise Agentic Control Architecture</span><span><span class="pg">02</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 03 MATURITY -->
+<section data-label="Maturity Classification">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§0.2</span> &nbsp;&nbsp;Maturity Classification of the Field</span><span>Scope</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">The Field, Honestly Assessed</div>
+    <div class="title md">Three maturity tiers. Different defences apply to each.</div>
+    <div class="body" style="margin-top:44px;">
+      <table class="plain">
+        <thead><tr><th style="width:18%">Tier</th><th style="width:48%">Areas</th><th style="width:34%">Standards In Force</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tag mature">Mature</span></td>
+              <td><b>Software supply chain, workload identity, policy enforcement, durable workflows, runtime isolation, rate limiting, logging and traces.</b></td>
+              <td>SLSA v1.2 · SPIFFE · OPA/Cedar · Temporal · gVisor/Firecracker · OpenTelemetry · Istio/Envoy</td></tr>
+          <tr><td><span class="tag custom">Custom</span></td>
+              <td><b>Decision-to-provenance binding, context provenance at decision time, multi-agent dependency graphs, architecture-level versioning, compound risk reclassification.</b></td>
+              <td>No formal standard; built from mature primitives.</td></tr>
+          <tr><td><span class="tag unsolved">Unsolved</span></td>
+              <td><b>Model-weight provenance, semantic validation of model outputs, non-deterministic replay, universal multi-agent lineage, cross-system context attestation.</b></td>
+              <td>Active work: NIST CAISI · OWASP ASI · OpenTelemetry GenAI SIG. No settled standard.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="footer"><span>§0.2 Maturity Classification</span><span><span class="pg">03</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 04 REGULATORY -->
+<section data-label="Regulatory Landscape">
+  <div class="frame alt glow">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§0.3</span> &nbsp;&nbsp;Regulatory Landscape</span><span>April 2026</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">What You Are Being Measured Against</div>
+    <div class="title md">Six frameworks, different stages of maturity, overlapping obligations.</div>
+    <div class="body" style="margin-top:38px;">
+      <table class="plain">
+        <thead><tr><th style="width:26%">Framework</th><th>Status &amp; Relevance</th></tr></thead>
+        <tbody>
+          <tr><td><b>NIST AI RMF + Agentic Profile</b></td><td>AI Agent Standards Initiative launched Feb 2026 via CAISI. Three pillars: security, interoperability, governance. SP 800-53 overlays (COSAiS) in development. Cyber AI Profile (IR 8596) maps CSF 2.0 to AI risks. Full agentic overlays expected <span class="accent">Q4 2026</span>.</td></tr>
+          <tr><td><b>OWASP Top 10 for Agentic Applications (2026)</b></td><td>Released Dec 2025. <span class="mono accent">ASI01–ASI10</span>: Goal Hijack, Tool Misuse, Identity &amp; Privilege Abuse, Supply Chain, Unexpected Code Execution, Memory &amp; Context Poisoning, Inter-Agent Comms, Cascading Failures, Human-Agent Trust Exploitation, Rogue Agents. Introduces <em>least agency</em>.</td></tr>
+          <tr><td><b>Singapore MGF for Agentic AI</b></td><td>Released Jan 2026 (Davos). First global governance framework specifically for agentic AI. Four dimensions: risk bounding · human accountability · technical controls · end-user responsibility. Voluntary but influential.</td></tr>
+          <tr><td><b>EU AI Act</b></td><td>High-risk obligations enforceable <span class="accent">2 August 2026</span>. Articles 9 (risk mgmt), 13 (transparency), 14 (human oversight), 16 (provider obligations). Penalties up to <b>€35M or 7%</b> global turnover.</td></tr>
+          <tr><td><b>OpenTelemetry GenAI Conventions</b></td><td>Still in <em>Development</em> status. Agent spans, tool execution spans, evaluation events defined but not yet stable.</td></tr>
+          <tr><td><b>SLSA v1.2</b></td><td>Build track stable. Source track in development. Covers code &amp; artifacts only. <em>No equivalent exists for model weights.</em></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="footer"><span>§0.3 Regulatory Landscape</span><span><span class="pg">04</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 05 DEFENSIBLE CLAIM -->
+<section data-label="The Defensible Claim">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§0.4</span> &nbsp;&nbsp;The Defensible Claim</span><span>Framing</span></div>
+    <div class="topbar-rule"></div>
+    <div class="body" style="justify-content:center;">
+      <div class="eyebrow" style="margin-top:0">The Position</div>
+      <div class="pull-quote" style="font-size:54px;margin-top:18px;max-width:1640px;">
+        We can make enterprise agentic systems <span class="accent">materially more controllable and auditable</span>. We cannot make them <span class="hl">perfectly explainable</span> or <span class="hl">perfectly reproducible</span>.
+      </div>
+      <div style="margin-top:58px;display:grid;grid-template-columns:1fr 1fr;gap:72px;">
+        <div><div class="rule-rule">What this architecture closes</div>
+          <div class="body-text" style="margin-top:6px;">The gaps most teams leave open — decision-to-provenance binding, context integrity, multi-agent lineage, dynamic governance.</div></div>
+        <div><div class="rule-rule">What it explicitly names</div>
+          <div class="body-text" style="margin-top:6px;">The gaps the industry has not yet solved — model-weight provenance, semantic validation, deterministic replay of frontier models.</div></div>
+      </div>
+    </div>
+    <div class="footer"><span>§0.4 Defensible Claim</span><span><span class="pg">05</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 06 12 REQUIREMENTS -->
+<section data-label="Twelve Requirements">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§1</span> &nbsp;&nbsp;Core Claim</span><span>Twelve Requirements</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">A defensible system in April 2026 must ensure:</div>
+    <div class="title md" style="margin-top:12px;">Twelve properties. Each binds to a control plane.</div>
+    <div class="body" style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:12px 56px;">
+      <div class="kv"><div class="k">01</div><div class="v"><b>System integrity</b> — what is running is trusted and provenance-verified.</div></div>
+      <div class="kv"><div class="k">07</div><div class="v"><b>Bounded aggregate behaviour</b> — rate limits, budgets, circuit breakers, dynamic autonomy downgrades prevent flash-crash scenarios.</div></div>
+      <div class="kv"><div class="k">02</div><div class="v"><b>Model path integrity</b> — exact model version, config, and eval baseline recorded per decision.</div></div>
+      <div class="kv"><div class="k">08</div><div class="v"><b>Context integrity</b> — every piece of context carries provenance, trust classification, tamper-detection hash.</div></div>
+      <div class="kv"><div class="k">03</div><div class="v"><b>Structural validation</b> — every model output validated before policy evaluation.</div></div>
+      <div class="kv"><div class="k">09</div><div class="v"><b>Decision dependency tracking</b> — multi-agent chains recorded as a graph, not isolated events.</div></div>
+      <div class="kv"><div class="k">04</div><div class="v"><b>Policy-gated execution</b> — no side effect without explicit policy authorisation.</div></div>
+      <div class="kv"><div class="k">10</div><div class="v"><b>Containment and recovery</b> — stop, quarantine, rollback; trace downstream impact.</div></div>
+      <div class="kv"><div class="k">05</div><div class="v"><b>Risk-proportionate isolation</b> — execution boundary matches decision risk class.</div></div>
+      <div class="kv"><div class="k">11</div><div class="v"><b>Jurisdictional compliance</b> — residency, inference location, cross-border flows as first-class policy checks.</div></div>
+      <div class="kv"><div class="k">06</div><div class="v"><b>Engineered human oversight</b> — authenticated, time-bounded, audited, escalation-pathed.</div></div>
+      <div class="kv"><div class="k">12</div><div class="v"><b>Architecture versioning</b> — exact control regime at decision time is reconstructable.</div></div>
+    </div>
+    <div class="footer"><span>§1 Core Claim</span><span><span class="pg">06</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 07 12 PLANES OVERVIEW -->
+<section data-label="The Twelve Control Planes">
+  <div class="frame seam">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§2</span> &nbsp;&nbsp;The Twelve Control Planes</span><span>Map of the Architecture</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">Architecture Map</div>
+    <div class="title md">Each plane closes a specific failure mode.</div>
+    <div class="body" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:0 80px;">
+      <div>
+        <div class="plane-card"><div class="n">01</div><div><div class="name">Governance</div><div class="purpose">Classifies decisions into risk tiers with explicit, testable rules.</div></div></div>
+        <div class="plane-card"><div class="n">02</div><div><div class="name">Build Integrity</div><div class="purpose">Signs and attests code, prompts, workflows, policies, tool adapters.</div></div></div>
+        <div class="plane-card"><div class="n">03</div><div><div class="name">Model Integrity</div><div class="purpose">Pins model path, provider, version, config, eval baseline per decision.</div></div></div>
+        <div class="plane-card"><div class="n">04</div><div><div class="name">Deployment Admission</div><div class="purpose">Rejects unsigned, unprovenanced, or incompatible artifacts.</div></div></div>
+        <div class="plane-card"><div class="n">05</div><div><div class="name">Identity &amp; Trust</div><div class="purpose">Scoped workload identity per component; least-privilege enforcement.</div></div></div>
+        <div class="plane-card"><div class="n">06</div><div><div class="name">Workflow &amp; State</div><div class="purpose">Durable, replayable workflow execution for consequential operations.</div></div></div>
+      </div>
+      <div>
+        <div class="plane-card"><div class="n">07</div><div><div class="name">Output Validation</div><div class="purpose">Schema + bounded plausibility checks between model and policy.</div></div></div>
+        <div class="plane-card"><div class="n">08</div><div><div class="name">Policy &amp; Authorisation</div><div class="purpose">Business + system authorisation before any side effect.</div></div></div>
+        <div class="plane-card"><div class="n">09</div><div><div class="name">Tool Execution</div><div class="purpose">Scoped by identity, delegation, context, risk class.</div></div></div>
+        <div class="plane-card"><div class="n">10</div><div><div class="name">Behaviour Bounding</div><div class="purpose">Rate, budget, circuit breakers, autonomy downgrades.</div></div></div>
+        <div class="plane-card"><div class="n">11</div><div><div class="name">Evidence &amp; Dependency</div><div class="purpose">Decision packages with upstream dependency graph.</div></div></div>
+        <div class="plane-card"><div class="n">12</div><div><div class="name">Detection · Response · Recovery</div><div class="purpose">Anomaly, quarantine, rollback, dependency-aware remediation.</div></div></div>
+      </div>
+    </div>
+    <div class="footer"><span>§2 Twelve Control Planes</span><span><span class="pg">07</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 08 GOVERNANCE -->
+<section data-label="Governance Plane">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§3 · Plane 01</span> &nbsp;&nbsp;Governance</span><span>Classification Engine</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">The Most Load-Bearing Plane</div>
+    <div class="title md">Classification engine, not taxonomy. If classification is weak, the entire architecture collapses.</div>
+    <div class="body" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:60px;">
+      <div>
+        <div class="rule-rule">Classification inputs</div>
+        <div class="body-text" style="margin-top:6px;">Financial impact · external system interaction · regulatory exposure (incl. jurisdiction) · data sensitivity · reversibility · blast-radius potential.</div>
+        <div class="rule-rule" style="margin-top:30px;">Output drives</div>
+        <div class="body-text" style="margin-top:6px;">Isolation tier · approval requirement · tool scope · rate limits · monitoring thresholds · blast-radius controls.</div>
+        <div class="critical" style="margin-top:36px;"><div class="label">Critical rule</div><div class="text">Classification must be deterministic from attributes, not based on human impression.</div></div>
+      </div>
+      <div>
+        <div class="rule-rule">Decision tiers</div>
+        <table class="plain" style="margin-top:10px;">
+          <tbody>
+            <tr><td style="width:80px;"><span class="risk-chip d3">D3</span></td><td><b>External / regulated action — max controls.</b> Writes external system · changes legal/financial state · regulated data across jurisdictions · grants privileged access · exceeds aggregate impact threshold.</td></tr>
+            <tr><td><span class="risk-chip d2">D2</span></td><td><b>Bounded internal action.</b> Changes internal state or triggers bounded internal effects; cannot independently create external legal, financial, or customer-facing consequences.</td></tr>
+            <tr><td><span class="risk-chip d1">D1</span></td><td>Read-only recommendations.</td></tr>
+            <tr><td><span class="risk-chip d0">D0</span></td><td>Informational or observational operations.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="footer"><span>§3 Governance</span><span><span class="pg">08</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 09 COMPOUND RISK + FEEDBACK -->
+<section data-label="Compound Risk and Feedback">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§3 · cont.</span> &nbsp;&nbsp;Compound Risk &amp; Feedback Loop</span><span>Governance Is Dynamic</span></div>
+    <div class="topbar-rule"></div>
+    <div class="body" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:72px;">
+      <div>
+        <div class="eyebrow" style="margin-top:0">Compound Risk Reclassification</div>
+        <div class="pull-quote" style="font-size:40px;margin-top:16px;">A sequence of D2 decisions whose cumulative financial, operational, or reputational impact exceeds a defined threshold must be governed as <span class="accent">D3</span>.</div>
+        <div class="body-text" style="margin-top:28px;">This prevents walking through D3-level outcomes one D2 step at a time. Aggregate exposure is a governance signal, not a monitoring metric.</div>
+      </div>
+      <div>
+        <div class="eyebrow" style="margin-top:0">Runtime Governance Feedback</div>
+        <div class="rule-rule" style="margin-top:18px;">When runtime behaviour degrades</div>
+        <ul class="dash" style="margin-top:8px;">
+          <li>Agent trips circuit breakers repeatedly → class automatically <b>downgraded</b>.</li>
+          <li>Anomaly scores rise → tool scopes <b>shrink</b>, rate limits <b>tighten</b>.</li>
+          <li>Cumulative impact approaches threshold → workflow <b>reclassifies</b> upward, stricter approvals.</li>
+        </ul>
+        <div class="small" style="margin-top:26px;">Aligns with Singapore MGF dimension 1 (risk bounding by design) and EU AI Act Article 9 (ongoing evidence-based risk management).</div>
+      </div>
+    </div>
+    <div class="footer"><span>§3 Governance — dynamic</span><span><span class="pg">09</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 10 BUILD INTEGRITY -->
+<section data-label="Build Integrity">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§4 · Plane 02</span> &nbsp;&nbsp;Build Integrity</span><span>Artifact Provenance</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">Scope</div>
+    <div class="title md">What enters production must be proven — code, prompts, policies, tools alike.</div>
+    <div class="body" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:60px;">
+      <div>
+        <div class="rule-rule">Artifacts covered</div>
+        <div class="body-text" style="margin-top:6px;">Application code · workflow definitions · prompt templates · policy bundles · tool adapters.</div>
+        <div class="rule-rule" style="margin-top:26px;">Flow</div>
+        <div class="panel" style="margin-top:10px;font-family:var(--mono);font-size:18px;line-height:1.6;">
+          git commit &nbsp;→&nbsp; CI build &nbsp;→&nbsp; signed artifact &nbsp;→<br/>
+          provenance attestation &nbsp;→&nbsp; <span class="accent">SLSA L3+ for production</span>
+        </div>
+        <div class="rule-rule" style="margin-top:26px;">Controls</div>
+        <ul class="dash" style="margin-top:4px;"><li>No manual builds</li><li>Signed artifacts only</li><li>Provenance required</li><li>Builder identity validated</li></ul>
+      </div>
+      <div>
+        <div class="rule-rule">OWASP <span class="owasp-id">ASI04</span> coverage</div>
+        <div class="body-text" style="margin-top:8px;">Agentic Supply Chain Vulnerabilities specifically calls out compromised tools, MCP servers, and dynamic prompt templates. Build integrity mitigates these by requiring signed manifests and provenance for all deployment artifacts — including tool adapters and prompt packs.</div>
+        <div class="critical" style="margin-top:36px;"><div class="label">Known limitation</div><div class="text">This secures software artifacts. It does <em>not</em> secure upstream model weights — that gap is the Model Integrity plane.</div></div>
+      </div>
+    </div>
+    <div class="footer"><span>§4 Build Integrity</span><span><span class="pg">10</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 11 MODEL INTEGRITY -->
+<section data-label="Model Integrity">
+  <div class="frame alt glow">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§5 · Plane 03</span> &nbsp;&nbsp;Model Integrity</span><span>SLSA-Equivalent Does Not Exist</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">The Industry Gap</div>
+    <div class="title md">No broadly adopted SLSA-equivalent for model weights as of April 2026.</div>
+    <div class="body" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:56px;">
+      <div>
+        <div class="rule-rule">Minimum requirement — every decision record</div>
+        <ul class="dash" style="margin-top:8px;">
+          <li>Model provider</li>
+          <li>Model ID / version</li>
+          <li>Inference configuration <span style="color:#a39c8a">(temperature, top-p, max tokens)</span></li>
+          <li>Tokenizer version</li>
+          <li>Safety-layer version</li>
+          <li>Evaluation baseline score for that exact model path</li>
+        </ul>
+      </div>
+      <div>
+        <div class="rule-rule">Higher-trust — self-hosted models</div>
+        <ul class="dash" style="margin-top:8px;">
+          <li>Weights digest (SHA-256) recorded and verified</li>
+          <li>Serving-image provenance</li>
+          <li>Quantisation configuration</li>
+          <li>Model-serving stack treated as a build artifact subject to SLSA-equivalent controls</li>
+        </ul>
+        <div class="critical" style="margin-top:28px;"><div class="label">Candid</div><div class="text">NIST CAISI has acknowledged the gap and is developing guidance. No standard has been published.</div></div>
+      </div>
+    </div>
+    <div class="footer"><span>§5 Model Integrity</span><span><span class="pg">11</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 12 DRIFT -->
+<section data-label="Model Endpoint Drift Detection">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§5 · cont.</span> &nbsp;&nbsp;Model Endpoint Drift Detection</span><span>Weakest Control in Practice</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">The Threat</div>
+    <div class="title md">A provider silently updates the model behind the same API endpoint.</div>
+    <div class="subtitle">The architecture must detect this. Three practical approaches; none sufficient alone.</div>
+    <div class="body" style="margin-top:38px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;">
+      <div class="panel"><div class="label">Approach A</div><div style="font-family:var(--serif);font-size:26px;font-weight:500;margin-bottom:10px;">Periodic evaluation benchmarks</div><div class="body-text" style="font-size:20px;">Run a fixed, version-controlled test set against the endpoint on a schedule. Compare to baseline scores. Alert on material deviation.</div></div>
+      <div class="panel"><div class="label">Approach B</div><div style="font-family:var(--serif);font-size:26px;font-weight:500;margin-bottom:10px;">Output distribution monitoring</div><div class="body-text" style="font-size:20px;">Statistical drift detection on token distributions, response latency, and response patterns. Detects silent capability and behavioural shifts.</div></div>
+      <div class="panel"><div class="label">Approach C</div><div style="font-family:var(--serif);font-size:26px;font-weight:500;margin-bottom:10px;">Contractual notification</div><div class="body-text" style="font-size:20px;">Legal obligation on the model provider to notify on any change behind a named endpoint. Non-technical control.</div></div>
+    </div>
+    <div class="critical" style="margin-top:36px;"><div class="label">Candid</div><div class="text">This is the single weakest control in most real deployments. The document acknowledges this openly.</div></div>
+    <div class="footer"><span>§5 Drift Detection</span><span><span class="pg">12</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 13 ADMISSION -->
+<section data-label="Deployment Admission">
+  <div class="frame seam">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§6 · Plane 04</span> &nbsp;&nbsp;Deployment Admission</span><span>A Hard Gate</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">Before Any Runtime Enters Production</div>
+    <div class="title md">Seven verifications must pass — or the artifact is rejected.</div>
+    <div class="body" style="margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+      <div class="panel"><div class="label">01</div><div style="font-family:var(--serif);font-size:24px;font-weight:500;">Image signature</div></div>
+      <div class="panel"><div class="label">02</div><div style="font-family:var(--serif);font-size:24px;font-weight:500;">Provenance attestation</div></div>
+      <div class="panel"><div class="label">03</div><div style="font-family:var(--serif);font-size:24px;font-weight:500;">Builder identity</div></div>
+      <div class="panel"><div class="label">04</div><div style="font-family:var(--serif);font-size:24px;font-weight:500;">Approved repository</div></div>
+      <div class="panel"><div class="label">05</div><div style="font-family:var(--serif);font-size:24px;font-weight:500;">Policy bundle compatibility</div></div>
+      <div class="panel"><div class="label">06</div><div style="font-family:var(--serif);font-size:24px;font-weight:500;">Serving-stack compatibility</div></div>
+      <div class="panel"><div class="label">07</div><div style="font-family:var(--serif);font-size:24px;font-weight:500;">Control bundle version compatibility</div></div>
+      <div class="panel" style="background:rgba(138,43,28,0.08);border-color:var(--danger);"><div class="label" style="color:var(--danger)">↛ Fail</div><div style="font-family:var(--serif);font-size:24px;font-weight:500;color:var(--danger);">Reject artifact</div></div>
+    </div>
+    <div class="critical" style="margin-top:36px;"><div class="label">Critical rule</div><div class="text">This is a hard gate, not a warning. Any failed verification rejects the artifact outright.</div></div>
+    <div class="footer"><span>§6 Deployment Admission</span><span><span class="pg">13</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 14 IDENTITY -->
+<section data-label="Identity and Trust">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§7 · Plane 05</span> &nbsp;&nbsp;Identity &amp; Trust</span><span>SPIFFE · mTLS · Zero Trust</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">Every Component Receives</div>
+    <div class="title md">Unique identity. Short-lived credentials. Scoped access. mTLS everywhere.</div>
+    <div class="body" style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:60px;">
+      <div>
+        <div class="rule-rule">Applies to</div>
+        <div class="body-text" style="margin-top:6px;">Agent orchestrator · retriever · tool runners · policy engine · human approval service · model gateway · anomaly detector.</div>
+        <div class="rule-rule" style="margin-top:28px;">OWASP <span class="owasp-id">ASI03</span> coverage</div>
+        <div class="body-text" style="margin-top:6px;">Identity and Privilege Abuse specifically targets inherited credentials, cached tokens, and delegated permissions. Short-lived, task-scoped credentials are the primary mitigation.</div>
+      </div>
+      <div>
+        <div class="critical"><div class="label">Critical rule</div><div class="text">Identity does not equal permission. <span class="accent">Identity plus policy</span> equals permission. A valid SPIFFE identity is necessary but not sufficient — it must map to least-privilege capability grants.</div></div>
+      </div>
+    </div>
+    <div class="footer"><span>§7 Identity &amp; Trust</span><span><span class="pg">14</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 15 WORKFLOW -->
+<section data-label="Workflow and State">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§8 · Plane 06</span> &nbsp;&nbsp;Workflow &amp; State</span><span>Durable · Replayable</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">The Source of Execution Truth</div>
+    <div class="title md">All consequential work happens inside a durable workflow.</div>
+    <div class="body" style="margin-top:38px;">
+      <div class="rule-rule">The workflow is responsible for</div>
+      <div style="margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px 40px;font-size:20px;line-height:1.4;">
+        <div>— Starting execution</div><div>— Retrieving &amp; classifying context</div><div>— Staging model calls</div>
+        <div>— Invoking output validation</div><div>— Invoking policy evaluation</div><div>— Pausing for human approval</div>
+        <div>— Executing tools in isolation</div><div>— Recording evidence</div><div>— Retrying safely</div>
+        <div>— Escalating on timeout</div><div>— Compensating on failure</div><div>— Rolling back on failure</div>
+      </div>
+      <div class="critical" style="margin-top:46px;"><div class="label">Critical rule</div><div class="text">No consequential side effect may happen in an ad hoc model loop. If it is not in a workflow, it did not happen under control.</div></div>
+    </div>
+    <div class="footer"><span>§8 Workflow &amp; State</span><span><span class="pg">15</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 16 OUTPUT VALIDATION -->
+<section data-label="Output Validation">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§9 · Plane 07</span> &nbsp;&nbsp;Output Validation</span><span>Between Model and Policy</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">Why This Plane Exists</div>
+    <div class="title md">Policy engines assume structured, trustworthy input. Models do not reliably produce structured truth.</div>
+    <div class="body" style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:56px;">
+      <div class="panel"><div class="label">Layer 1 · Schema</div>
+        <div class="body-text" style="margin-top:8px;">Correct structure · required fields present · valid enum values · parameter bounds · tool name exists in registry · no forbidden argument combinations.</div></div>
+      <div class="panel"><div class="label">Layer 2 · Semantic plausibility</div>
+        <div class="body-text" style="margin-top:8px;">Is the proposed action plausible in context? Correct counterparty? Sensible amount? Expected destination? Consistent with retrieved facts? Sane timing?</div></div>
+    </div>
+    <div class="critical" style="margin-top:34px;"><div class="label">Honest limit</div><div class="text">Semantic correctness is only partially solvable. The claim is <span class="accent">not</span> "the system proves semantic truth" — it is "the system applies layered plausibility checks and escalates uncertainty to human review for high-consequence decisions."</div></div>
+    <div class="small" style="margin-top:22px;"><b>Backstop when semantic validation fails silently:</b> behaviour bounding detects unusual patterns · human review for all D3 · anomaly detection flags deviations from expected decision distributions.</div>
+    <div class="footer"><span>§9 Output Validation</span><span><span class="pg">16</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 17 POLICY -->
+<section data-label="Policy and Authorisation">
+  <div class="frame alt glow">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§10 · Plane 08</span> &nbsp;&nbsp;Policy &amp; Authorisation</span><span>OPA · Cedar</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">Two Layers of Authorisation</div>
+    <div class="title md">Only policy may authorise. Model output never directly triggers a side effect.</div>
+    <div class="body" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:56px;">
+      <div>
+        <div class="rule-rule">Business authorisation</div>
+        <div class="body-text" style="margin-top:6px;">Who can do what, with what, under what conditions. Actor entitlement · target resource entitlement · separation-of-duty · cumulative exposure.</div>
+        <div class="rule-rule" style="margin-top:26px;">System / environment authorisation</div>
+        <div class="body-text" style="margin-top:6px;">Runtime constraints · infrastructure state · deployment context · data residency and cross-border restrictions.</div>
+      </div>
+      <div>
+        <div class="rule-rule">Checks applied on every proposal</div>
+        <ul class="dash" style="margin-top:6px;">
+          <li>Actor entitlement</li>
+          <li>Target resource entitlement</li>
+          <li>Risk class from governance engine</li>
+          <li>Current environment state</li>
+          <li>Approval requirement</li>
+          <li>Cumulative exposure</li>
+          <li>Separation-of-duty rules</li>
+          <li>Contextual restrictions inc. data residency</li>
+        </ul>
+      </div>
+    </div>
+    <div class="critical" style="margin-top:34px;"><div class="label">Critical rule</div><div class="text">The model may suggest. The workflow may stage. <span class="accent">Only policy may authorise.</span></div></div>
+    <div class="footer"><span>§10 Policy &amp; Authorisation</span><span><span class="pg">17</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 18 TOOLS -->
+<section data-label="Tool Execution">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§11 · Plane 09</span> &nbsp;&nbsp;Tool Execution</span><span>A Separate Control Domain</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">Threat Context</div>
+    <div class="title md">OWASP <span class="owasp-id">ASI02</span> documents real incidents where legitimate tools were weaponised through manipulated inputs.</div>
+    <div class="body" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:60px;">
+      <div>
+        <div class="rule-rule">Every tool must have</div>
+        <ul class="dash" style="margin-top:6px;">
+          <li>Explicit identity</li>
+          <li>Explicit owner</li>
+          <li>Explicit action class</li>
+          <li>Parameter schema</li>
+          <li>Least-privilege scope</li>
+          <li>Read/write classification</li>
+          <li>Risk rating</li>
+          <li>Invocation audit trail</li>
+        </ul>
+      </div>
+      <div>
+        <div class="rule-rule">Tool access is constrained by</div>
+        <ul class="dash" style="margin-top:6px;">
+          <li>Agent identity</li>
+          <li>Decision class</li>
+          <li>User delegation scope</li>
+          <li>Current workflow state</li>
+          <li>Policy result</li>
+          <li>Rate / budget controls</li>
+        </ul>
+        <div class="critical" style="margin-top:24px;"><div class="label">Critical rule</div><div class="text">A general-purpose agent identity must not imply broad tool access. Tool access is explicitly granted per-context, never inherited from identity alone.</div></div>
+      </div>
+    </div>
+    <div class="footer"><span>§11 Tool Execution</span><span><span class="pg">18</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 19 BEHAVIOUR BOUNDING -->
+<section data-label="Behaviour Bounding">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§12 · Plane 10</span> &nbsp;&nbsp;Behaviour Bounding</span><span>Flash-Crash Prevention</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">OWASP <span class="owasp-id">ASI08</span> — Cascading Failures</div>
+    <div class="title md">Individually valid actions can be collectively catastrophic.</div>
+    <div class="body" style="margin-top:38px;display:grid;grid-template-columns:1fr 1fr;gap:56px;">
+      <div>
+        <div class="rule-rule">Controls</div>
+        <ul class="dash" style="margin-top:6px;">
+          <li>Per-agent rate limits</li>
+          <li>Per-workflow action limits</li>
+          <li>Per-tenant budgets</li>
+          <li>Per-tool quotas</li>
+          <li>Cumulative risk thresholds</li>
+          <li>Max write volume</li>
+          <li>Circuit breakers</li>
+          <li>Kill switches</li>
+          <li>Escalation to human control</li>
+        </ul>
+      </div>
+      <div>
+        <div class="rule-rule">Dynamic autonomy downgrade</div>
+        <ul class="dash" style="margin-top:6px;">
+          <li>Agent hits limits repeatedly → governance plane automatically reclassifies.</li>
+          <li>Anomaly scores rise → tool scopes shrink.</li>
+          <li>Cumulative impact approaches threshold → workflow reclassifies into higher tier, requiring stricter approvals.</li>
+        </ul>
+        <div class="critical" style="margin-top:26px;"><div class="label">Critical rule</div><div class="text">Governance is dynamic, not static.</div></div>
+      </div>
+    </div>
+    <div class="footer"><span>§12 Behaviour Bounding</span><span><span class="pg">19</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 20 EVIDENCE & DEPENDENCY -->
+<section data-label="Evidence and Dependency">
+  <div class="frame seam">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§13 · Plane 11</span> &nbsp;&nbsp;Evidence &amp; Dependency</span><span>Decision Package</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">What Every Consequential Decision Produces</div>
+    <div class="title sm">A structured decision package linking runtime to provenance — and to upstream decisions as a graph.</div>
+    <div class="body" style="margin-top:32px;display:grid;grid-template-columns:1.1fr 1fr;gap:48px;">
+      <div>
+        <div class="rule-rule">Decision package — minimum fields</div>
+        <div style="font-family:var(--mono);font-size:15px;line-height:1.7;margin-top:12px;color:var(--ink-soft);column-count:2;column-gap:28px;">
+          decision_id<br>workflow_id<br>timestamp<br>actor_identity<br>input_refs<br>context_refs + trust_class + chunk_hashes<br>upstream_dependencies<br>model_path (provider,version,config)<br>prompt_version<br>output_validation_result<br>policy_result + bundle_version<br>approval_result + expiry<br>tool_invocation_details<br>side_effects<br>runtime_image_digest<br>provenance_ref<br>control_bundle_version
+        </div>
+      </div>
+      <div>
+        <div class="rule-rule">Dependency graph — multi-agent fields</div>
+        <ul class="dash" style="margin-top:8px;font-size:20px;">
+          <li>Parent decision IDs</li>
+          <li>Upstream agent IDs</li>
+          <li>Dependency graph edge list</li>
+          <li>Confidence / trust class on inherited context</li>
+          <li>Delegation scope token reference</li>
+        </ul>
+        <div class="critical" style="margin-top:26px;"><div class="label">Critical rule</div><div class="text">Decisions are part of a directed acyclic graph, not isolated events.</div></div>
+        <div class="small" style="margin-top:16px;">Aligns with EU AI Act Art 13 (transparency for high-risk systems) and Singapore MGF dimension 4 (end-user responsibility through transparency).</div>
+      </div>
+    </div>
+    <div class="footer"><span>§13 Evidence &amp; Dependency</span><span><span class="pg">20</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 21 DETECTION RESPONSE RECOVERY -->
+<section data-label="Detection Response Recovery">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§14 · Plane 12</span> &nbsp;&nbsp;Detection · Response · Recovery</span><span>Beyond Observability</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">Observability Is Necessary — Not Sufficient</div>
+    <div class="title md">Detection without response is just observation.</div>
+    <div class="body" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;">
+      <div class="panel"><div class="label">Detection</div>
+        <ul class="dash" style="font-size:19px;margin-top:4px;">
+          <li>Anomaly detection on live behaviour</li>
+          <li>Pattern deviation detection</li>
+          <li>Context poisoning heuristics <span class="owasp-id">ASI06</span></li>
+          <li>Policy-compliant but contextually abnormal patterns</li>
+          <li>Model output drift monitoring</li>
+        </ul></div>
+      <div class="panel"><div class="label">Response</div>
+        <ul class="dash" style="font-size:19px;margin-top:4px;">
+          <li>Pause workflow</li>
+          <li>Revoke workload identity</li>
+          <li>Disable tool</li>
+          <li>Quarantine agent</li>
+          <li>Rotate signing materials</li>
+          <li>Quarantine suspect model version</li>
+          <li>Halt downstream workflows</li>
+        </ul></div>
+      <div class="panel"><div class="label">Recovery</div>
+        <ul class="dash" style="font-size:19px;margin-top:4px;">
+          <li>Replay dependency graph from compromised node</li>
+          <li>Identify all downstream decisions affected</li>
+          <li>Execute compensating actions for irreversible side effects</li>
+          <li>Produce forensic evidence package for regulators</li>
+        </ul></div>
+    </div>
+    <div class="footer"><span>§14 Detect · Respond · Recover</span><span><span class="pg">21</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 22 HUMAN APPROVAL -->
+<section data-label="Human Approval Architecture">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§15</span> &nbsp;&nbsp;Human Approval Architecture</span><span>Engineered, Not A Checkbox</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">OWASP <span class="owasp-id">ASI09</span> — Human-Agent Trust Exploitation</div>
+    <div class="title md">Humans over-rely on agent recommendations, approving harmful actions. A weak approval path invalidates the entire architecture.</div>
+    <div class="body" style="margin-top:36px;">
+      <div class="rule-rule">The approval subsystem must define</div>
+      <div style="margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px 40px;font-size:20px;line-height:1.4;">
+        <div>— Who can approve <span style="color:var(--muted)">(role-validated identity)</span></div>
+        <div>— What they can approve <span style="color:var(--muted)">(scoped by decision class)</span></div>
+        <div>— What evidence is shown before approving</div>
+        <div>— How approval is authenticated <span style="color:var(--muted)">(strong identity, not just session)</span></div>
+        <div>— How long approval remains valid <span style="color:var(--muted)">(explicit expiry)</span></div>
+        <div>— What happens on timeout <span style="color:var(--muted)">(escalation, not silent approval)</span></div>
+        <div>— When escalation occurs</div>
+        <div>— What is recorded for audit <span style="color:var(--muted)">(immutable)</span></div>
+        <div>— Whether approval is one-time, bounded, or reusable</div>
+      </div>
+      <div class="critical" style="margin-top:40px;"><div class="label">Failure mode</div><div class="text">Rubber-stamped, time-out-to-auto-approve, or unauthenticated approvals make human oversight <span class="accent">illusory</span> — and invalidate every control downstream.</div></div>
+    </div>
+    <div class="footer"><span>§15 Human Approval</span><span><span class="pg">22</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 23 CONTEXT INTEGRITY -->
+<section data-label="Context Integrity">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§16</span> &nbsp;&nbsp;Context Integrity</span><span>Context Is An Attack Surface</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">OWASP <span class="owasp-id">ASI06</span> — Memory &amp; Context Poisoning</div>
+    <div class="title md">Minimum viable context provenance on every chunk used in a decision.</div>
+    <div class="body" style="margin-top:34px;">
+      <table class="plain">
+        <thead><tr><th style="width:22%">Field</th><th style="width:30%">Requirement</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td><b>Source ID</b></td><td>Document or system identifier</td><td>Trace origin</td></tr>
+          <tr><td><b>Chunk hash</b></td><td>SHA-256 of retrieved content</td><td>Detect tampering since retrieval</td></tr>
+          <tr><td><b>Retrieval time</b></td><td>Timestamp</td><td>Reason about freshness</td></tr>
+          <tr><td><b>Trust class</b></td><td>Canonical · transformed · external · agent-generated · user-supplied</td><td>Let policy weight context quality</td></tr>
+          <tr><td><b>Transformation ref</b></td><td>ID if content was summarised or translated</td><td>Inspect derived context</td></tr>
+          <tr><td><b>Session scope</b></td><td>Workflow or case ID</td><td>Prevent cross-case contamination</td></tr>
+        </tbody>
+      </table>
+      <div class="small" style="margin-top:24px;"><b>Context absence detection.</b> Track not only what context was used, but flag when expected context was <em>not</em> retrieved. This prevents agents proceeding on incomplete context without detection.</div>
+      <div class="small" style="margin-top:12px;"><b>Hash verification at decision time.</b> The system must verify that the specific context hashes used by the agent still match the stored content or canonical source reference.</div>
+    </div>
+    <div class="footer"><span>§16 Context Integrity</span><span><span class="pg">23</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 24 MULTI-AGENT DELEGATION -->
+<section data-label="Multi-Agent Delegation">
+  <div class="frame alt glow">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§17</span> &nbsp;&nbsp;Multi-Agent Delegation</span><span>Scoped Capability Tokens</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">OWASP <span class="owasp-id">ASI07</span> &nbsp;·&nbsp; <span class="owasp-id">ASI03</span></div>
+    <div class="title md">Least privilege is not real until delegation is carried as a scoping token.</div>
+    <div class="body" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:56px;">
+      <div>
+        <div class="rule-rule">Enforcement mechanism</div>
+        <div class="body-text" style="margin-top:6px;">Parent agent receives a scoped capability token tied to workflow, decision class, allowed tools, argument bounds, and expiry. When delegating, the parent can only mint a child token that is <b>equal or narrower</b> in scope. The policy plane verifies the presented capability token before every delegated action.</div>
+      </div>
+      <div>
+        <div class="rule-rule">Revocation propagation</div>
+        <div class="body-text" style="margin-top:6px;">If a parent's token is revoked mid-workflow, all child tokens must be immediately invalidated. In-flight child workflows halt at the next checkpoint, record incomplete state, and trigger compensating actions for any completed side effects. Revocation cascades through the entire delegation chain.</div>
+      </div>
+    </div>
+    <div class="critical" style="margin-top:36px;"><div class="label">Critical rule</div><div class="text">Authority shrinks with delegation. No sub-agent may inherit more authority than its parent was explicitly granted.</div></div>
+    <div class="footer"><span>§17 Multi-Agent Delegation</span><span><span class="pg">24</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 25 KEY LIFECYCLE -->
+<section data-label="Key and Trust Material Lifecycle">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§18</span> &nbsp;&nbsp;Key &amp; Trust Material Lifecycle</span><span>Surviving Compromise</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">Do Not Hide This Under An Assumption</div>
+    <div class="title md">OWASP <span class="owasp-id">ASI04</span> includes compromised credentials as a root cause. Explicit lifecycle controls are required.</div>
+    <div class="body" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:56px;">
+      <div>
+        <div class="rule-rule">Required controls</div>
+        <ul class="dash" style="margin-top:6px;">
+          <li>Issuance</li>
+          <li>Scheduled rotation</li>
+          <li>On-demand revocation</li>
+          <li>Compromise detection <span style="color:var(--muted)">(anomalous signing pattern monitoring)</span></li>
+          <li>Emergency break-glass procedures</li>
+          <li>Recovery after compromise <span style="color:var(--muted)">(re-signing, re-attestation)</span></li>
+          <li>Signer trust-store updates</li>
+          <li>Historical verification after rotation</li>
+        </ul>
+      </div>
+      <div>
+        <div class="rule-rule">Applies to</div>
+        <ul class="dash" style="margin-top:6px;">
+          <li>Signing identities</li>
+          <li>Workload identity roots</li>
+          <li>Approval credentials</li>
+          <li>Tool credentials</li>
+          <li>KMS-backed materials</li>
+        </ul>
+        <div class="critical" style="margin-top:26px;"><div class="label">Critical rule</div><div class="text">A secure system is not one with keys. It is one that <span class="accent">survives key compromise</span>.</div></div>
+      </div>
+    </div>
+    <div class="footer"><span>§18 Key &amp; Trust Lifecycle</span><span><span class="pg">25</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 26 DATA RESIDENCY -->
+<section data-label="Data Residency and Jurisdiction">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§19</span> &nbsp;&nbsp;Data Residency &amp; Jurisdictional Controls</span><span>First-Class Policy</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">Where Inference Happens Matters</div>
+    <div class="title md">A control architecture is incomplete if it ignores where inference, storage, and retrieval occur.</div>
+    <div class="body" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:56px;">
+      <div>
+        <div class="rule-rule">Regulatory basis</div>
+        <div class="body-text" style="margin-top:6px;">EU AI Act requires high-risk systems meet specific data governance obligations (Article 10). GDPR cross-border transfer rules apply to any AI system processing EU personal data.</div>
+        <div class="rule-rule" style="margin-top:26px;">What to classify</div>
+        <div class="body-text" style="margin-top:6px;">Every model route and data store by region and jurisdiction. Bind policy to location constraints.</div>
+      </div>
+      <div>
+        <div class="rule-rule">Every decision package records</div>
+        <ul class="dash" style="margin-top:6px;">
+          <li>Where inference occurred</li>
+          <li>Where context was retrieved from</li>
+          <li>Where evidence was stored</li>
+        </ul>
+        <div class="critical" style="margin-top:26px;"><div class="label">Critical rule</div><div class="text">Cross-border flow is a first-class <span class="accent">policy check</span>, not a legal footnote.</div></div>
+      </div>
+    </div>
+    <div class="footer"><span>§19 Data Residency &amp; Jurisdiction</span><span><span class="pg">26</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 27 ARCHITECTURE VERSIONING -->
+<section data-label="Architecture Versioning">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§20</span> &nbsp;&nbsp;Architecture Versioning</span><span>Control Bundle</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">Component Versions Are Not Enough</div>
+    <div class="title md">You need the control regime version.</div>
+    <div class="body" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:56px;">
+      <div>
+        <div class="rule-rule">A control bundle includes</div>
+        <ul class="dash" style="margin-top:6px;">
+          <li>Governance rules version</li>
+          <li>Policy packs version</li>
+          <li>Tool schemas version</li>
+          <li>Approval logic version</li>
+          <li>Anomaly thresholds version</li>
+          <li>Circuit-breaker settings version</li>
+        </ul>
+        <div class="body-text" style="margin-top:22px;">Store the control bundle version in every decision package. Promote bundles through test, staging, and production the same way you promote code.</div>
+      </div>
+      <div>
+        <div class="rule-rule">Rollback compatibility rule</div>
+        <div class="body-text" style="margin-top:6px;">Decisions made under a subsequently reverted control bundle <b>remain valid as of their execution time</b>. The revert itself is recorded as a governance event. This prevents audit gaps during control-regime changes.</div>
+        <div class="critical" style="margin-top:30px;"><div class="label">Critical rule</div><div class="text">You must be able to answer: <span class="accent">which exact control architecture was in force when this decision occurred?</span></div></div>
+      </div>
+    </div>
+    <div class="footer"><span>§20 Architecture Versioning</span><span><span class="pg">27</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 28 RECONSTRUCTION -->
+<section data-label="Reconstruction Not Replay">
+  <div class="frame alt glow">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§21</span> &nbsp;&nbsp;Reconstruction, Not Perfect Replay</span><span>Most Important Framing Decision</span></div>
+    <div class="topbar-rule"></div>
+    <div class="body" style="justify-content:center;">
+      <div class="eyebrow" style="margin-top:0">The Framing</div>
+      <div class="pull-quote" style="font-size:50px;margin-top:18px;max-width:1640px;">
+        Do not claim exact replay of frontier model behaviour. LLMs are inherently non-deterministic. The defensible claim is <span class="accent">decision context reconstruction plus policy re-evaluation</span>.
+      </div>
+      <div style="margin-top:50px;display:grid;grid-template-columns:1fr 1fr;gap:64px;">
+        <div>
+          <div class="rule-rule">What you can prove</div>
+          <ul class="dash" style="margin-top:6px;color:var(--paper);font-size:19px;">
+            <li>Exact inputs provided to the model</li>
+            <li>Exact context references (with hashes) used</li>
+            <li>Exact policy bundle and governance rules in force</li>
+            <li>Exact tool scopes available</li>
+            <li>Exact approval chain and evidence</li>
+            <li>Exact control bundle version active</li>
+          </ul>
+        </div>
+        <div>
+          <div class="rule-rule">What regulators need</div>
+          <div class="body-text" style="margin-top:6px;">Proof the decision was made <b>within the correct control boundaries</b>, using verified context, under valid policy, with proper authorisation. Exact reproduction of the model output is neither achievable nor required.</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><span>§21 Reconstruction</span><span><span class="pg">28</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 29 CONTROL PLANE ASSURANCE -->
+<section data-label="Control Plane Assurance">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§22</span> &nbsp;&nbsp;Control Plane Assurance</span><span>Tested, Not Assumed</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">An Untested Control Is A Hypothesis</div>
+    <div class="title md">Twelve control planes mean nothing if they are never exercised under adversarial conditions.</div>
+    <div class="body" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:26px;">
+      <div class="panel"><div class="label">Red-team exercises</div><div class="body-text" style="margin-top:6px;font-size:20px;">Adversarial testing against each OWASP ASI01–ASI10 category.</div></div>
+      <div class="panel"><div class="label">Chaos engineering</div><div class="body-text" style="margin-top:6px;font-size:20px;">Verify circuit breakers fire at correct thresholds, quarantine actually isolates, revocation cascades propagate.</div></div>
+      <div class="panel"><div class="label">Policy validation</div><div class="body-text" style="margin-top:6px;font-size:20px;">Confirm the policy engine blocks what it should block (test with known-bad proposals).</div></div>
+      <div class="panel"><div class="label">Approval path testing</div><div class="body-text" style="margin-top:6px;font-size:20px;">Verify timeout escalation, expiry enforcement, audit trail completeness.</div></div>
+      <div class="panel"><div class="label">Key compromise drills</div><div class="body-text" style="margin-top:6px;font-size:20px;">Simulate signing key compromise and verify recovery procedures.</div></div>
+      <div class="panel"><div class="label">Context poisoning simulation</div><div class="body-text" style="margin-top:6px;font-size:20px;">Inject known-bad context and verify detection heuristics.</div></div>
+    </div>
+    <div class="small" style="margin-top:24px;">Assurance should run <b>continuously</b>, not as a one-time exercise. Results are versioned alongside the control bundle.</div>
+    <div class="footer"><span>§22 Assurance</span><span><span class="pg">29</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 30 END-TO-END REQUEST PATH -->
+<section data-label="End-to-End Request Path">
+  <div class="frame seam">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§23</span> &nbsp;&nbsp;End-to-End Request Path</span><span>How The Planes Interlock</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">Thirteen Stages</div>
+    <div class="title sm">One consequential decision, traced through every plane.</div>
+    <div class="body" style="margin-top:38px;">
+      <div class="flow">
+        <div class="step"><span class="i">01</span>Admit signed artifact + control bundle<span class="p">Build · Admission</span></div>
+        <div class="step"><span class="i">02</span>Runtime receives workload identity<span class="p">Identity</span></div>
+        <div class="step"><span class="i">03</span>Workflow starts; classify risk<span class="p">Governance</span></div>
+        <div class="step"><span class="i">04</span>Retrieve &amp; classify context; check absence<span class="p">Context</span></div>
+        <div class="step"><span class="i">05</span>Model generates proposal; path recorded<span class="p">Model</span></div>
+        <div class="step"><span class="i">06</span>Validate structure + plausibility<span class="p">Validation</span></div>
+        <div class="step"><span class="i">07</span>Evaluate policy + jurisdiction<span class="p">Policy</span></div>
+        <div class="step"><span class="i">08</span>Pause for authenticated approver<span class="p">Approval</span></div>
+        <div class="step"><span class="i">09</span>Execute tool in isolation tier<span class="p">Tools</span></div>
+        <div class="step"><span class="i">10</span>Check rate, budget, cumulative impact<span class="p">Bounding</span></div>
+        <div class="step"><span class="i">11</span>Write decision package + dep graph<span class="p">Evidence</span></div>
+        <div class="step"><span class="i">12</span>Detect anomalies + drift live<span class="p">Detection</span></div>
+        <div class="step"><span class="i">13</span>On breach: quarantine · revoke · replay<span class="p">Recovery</span></div>
+      </div>
+      <div class="small" style="margin-top:36px;">Each step produces evidence, updates the dependency graph, and may trigger dynamic reclassification via the governance feedback loop.</div>
+    </div>
+    <div class="footer"><span>§23 Request Path</span><span><span class="pg">30</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 31 OWASP MAPPING -->
+<section data-label="OWASP Agentic Top 10 Mapping">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§24</span> &nbsp;&nbsp;OWASP Agentic Top 10 Mapping</span><span>Coverage Table</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">Every ASI Category Maps To At Least One Plane</div>
+    <div class="title sm">Coverage is explicit; residual risks are named, not hidden.</div>
+    <div class="body" style="margin-top:24px;">
+      <table class="plain" style="font-size:18px;">
+        <thead><tr><th style="width:28%">OWASP Risk</th><th style="width:38%">Primary Control Planes</th><th>Residual Risk</th></tr></thead>
+        <tbody>
+          <tr><td><b>ASI01 · Agent Goal Hijack</b></td><td>Context Integrity · Output Validation · Behaviour Bounding</td><td>Sophisticated indirect injection may evade plausibility checks</td></tr>
+          <tr><td><b>ASI02 · Tool Misuse</b></td><td>Tool Execution · Policy · Output Validation</td><td>Novel tool abuse patterns require updated detection rules</td></tr>
+          <tr><td><b>ASI03 · Identity &amp; Privilege Abuse</b></td><td>Identity &amp; Trust · Multi-Agent Delegation · Key Lifecycle</td><td>Insider threat with legitimate credentials</td></tr>
+          <tr><td><b>ASI04 · Supply Chain Vulnerabilities</b></td><td>Build Integrity · Model Integrity · Deployment Admission</td><td>No model-weight provenance standard</td></tr>
+          <tr><td><b>ASI05 · Unexpected Code Execution</b></td><td>Tool Execution (sandboxing) · Workflow (no ad hoc)</td><td>Zero-day escape from isolation boundary</td></tr>
+          <tr><td><b>ASI06 · Memory &amp; Context Poisoning</b></td><td>Context Integrity · Context Absence Detection</td><td>Slow poisoning below detection threshold</td></tr>
+          <tr><td><b>ASI07 · Insecure Inter-Agent Comms</b></td><td>Identity (mTLS) · Multi-Agent Delegation (scoped tokens)</td><td>Token theft via side-channel</td></tr>
+          <tr><td><b>ASI08 · Cascading Failures</b></td><td>Behaviour Bounding · Governance Feedback · Circuit Breakers</td><td>Novel cascade pattern not covered by current thresholds</td></tr>
+          <tr><td><b>ASI09 · Human-Agent Trust Exploitation</b></td><td>Human Approval Architecture · Evidence presentation</td><td>Automation bias despite controls</td></tr>
+          <tr><td><b>ASI10 · Rogue Agents</b></td><td>Detection &amp; Response · Quarantine · Kill Switches</td><td>Sophisticated evasion of behavioural monitoring</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="footer"><span>§24 OWASP Mapping</span><span><span class="pg">31</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 32 KNOWN GAPS -->
+<section data-label="Known Gaps April 2026">
+  <div class="frame alt glow">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§25</span> &nbsp;&nbsp;Known Gaps</span><span>April 2026</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">Stated Openly</div>
+    <div class="title md">A document that hides its limitations is less defensible than one that leads with them.</div>
+    <div class="body" style="margin-top:32px;">
+      <table class="plain" style="font-size:19px;">
+        <thead><tr><th style="width:36%">Gap</th><th>Current State &amp; Mitigation</th></tr></thead>
+        <tbody>
+          <tr><td><b>No standard for model-weight provenance</b></td><td>NIST CAISI developing guidance. Mitigation: record model path per decision, periodic eval benchmarks, contractual notification from providers.</td></tr>
+          <tr><td><b>No standard for decision-to-provenance binding</b></td><td>Custom implementation linking runtime decisions to build attestations via decision packages. No formal specification exists.</td></tr>
+          <tr><td><b>No standard for multi-agent decision lineage</b></td><td>Dependency graph tracking is custom engineering. NIST planning multi-agent overlays for SP 800-53 (late 2026).</td></tr>
+          <tr><td><b>No deterministic replay for LLMs</b></td><td>Reframed as decision context reconstruction plus policy re-evaluation. Exact model output reproduction is not claimed.</td></tr>
+          <tr><td><b>No universal context integrity attestation</b></td><td>Minimum viable provenance model implemented; full cross-system attestation standard does not exist.</td></tr>
+          <tr><td><b>Semantic validation is partially solvable</b></td><td>Layered plausibility checks reduce but do not eliminate risk. Backstop: human review for high-consequence decisions; anomaly detection.</td></tr>
+          <tr><td><b>OpenTelemetry GenAI not yet stable</b></td><td>Agent spans, tool execution spans, evaluation events defined but in Development status. Production should use opt-in stability flags.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="footer"><span>§25 Known Gaps</span><span><span class="pg">32</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 33 ATTACK SURFACE -->
+<section data-label="Residual Attack Surface">
+  <div class="frame">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§27</span> &nbsp;&nbsp;What This Architecture Does Not Fully Solve</span><span>Residual Attack Surface</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">Mitigated But Not Eliminated</div>
+    <div class="title md">The architecture is honest about these. No system eliminates all risk.</div>
+    <div class="body" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:12px 60px;">
+      <div class="kv"><div class="k">·</div><div class="v">Compromised CI pipeline <span style="color:var(--muted)">(mitigated by SLSA L3; not immune to nation-state)</span></div></div>
+      <div class="kv"><div class="k">·</div><div class="v">Sophisticated prompt injection through indirect channels <span class="owasp-id">ASI01</span></div></div>
+      <div class="kv"><div class="k">·</div><div class="v">Malicious policy definition by an authorised insider</div></div>
+      <div class="kv"><div class="k">·</div><div class="v">Model hallucination producing plausible but wrong outputs that pass validation</div></div>
+      <div class="kv"><div class="k">·</div><div class="v">Insider threat with legitimate signing privileges</div></div>
+      <div class="kv"><div class="k">·</div><div class="v">External system compromise downstream of tool invocations</div></div>
+      <div class="kv"><div class="k">·</div><div class="v">Slow context poisoning below anomaly detection thresholds <span class="owasp-id">ASI06</span></div></div>
+      <div class="kv"><div class="k">·</div><div class="v">Automation bias causing rubber-stamp approvals <span class="owasp-id">ASI09</span></div></div>
+      <div class="kv"><div class="k">·</div><div class="v">Novel cascade patterns not covered by current circuit-breaker thresholds <span class="owasp-id">ASI08</span></div></div>
+      <div></div>
+    </div>
+    <div class="critical" style="margin-top:30px;"><div class="label">Defensible claim</div><div class="text">Failures can be <span class="accent">detected, contained, and reconstructed with evidence</span>.</div></div>
+    <div class="footer"><span>§27 Residual Attack Surface</span><span><span class="pg">33</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 34 CLIENT DIAGNOSTIC -->
+<section data-label="Client Diagnostic Sixteen Questions">
+  <div class="frame seam">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§26</span> &nbsp;&nbsp;Client Diagnostic</span><span>Sixteen Questions</span></div>
+    <div class="topbar-rule"></div>
+    <div class="eyebrow">Use Against Any Enterprise Agentic Deployment</div>
+    <div class="title sm">Any "no" is a real control gap.</div>
+    <div class="body" style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:4px 56px;">
+      <div>
+        <div class="kv" style="padding:8px 0;border-bottom:1px solid var(--rule-soft);grid-template-columns:44px 1fr 140px;gap:14px;"><div class="k" style="font-size:16px">01</div><div class="v" style="font-size:18px">Can you prove what artifact is running?</div><div class="small" style="font-size:13px;text-align:right;">Build · Admission</div></div>
+        <div class="kv" style="padding:8px 0;border-bottom:1px solid var(--rule-soft);grid-template-columns:44px 1fr 140px;gap:14px;"><div class="k" style="font-size:16px">02</div><div class="v" style="font-size:18px">Can you identify the exact model path used?</div><div class="small" style="font-size:13px;text-align:right;">Model Integrity</div></div>
+        <div class="kv" style="padding:8px 0;border-bottom:1px solid var(--rule-soft);grid-template-columns:44px 1fr 140px;gap:14px;"><div class="k" style="font-size:16px">03</div><div class="v" style="font-size:18px">Do you detect silent model changes behind an endpoint?</div><div class="small" style="font-size:13px;text-align:right;">Drift Detection</div></div>
+        <div class="kv" style="padding:8px 0;border-bottom:1px solid var(--rule-soft);grid-template-columns:44px 1fr 140px;gap:14px;"><div class="k" style="font-size:16px">04</div><div class="v" style="font-size:18px">Do you validate model outputs before policy sees them?</div><div class="small" style="font-size:13px;text-align:right;">Validation</div></div>
+        <div class="kv" style="padding:8px 0;border-bottom:1px solid var(--rule-soft);grid-template-columns:44px 1fr 140px;gap:14px;"><div class="k" style="font-size:16px">05</div><div class="v" style="font-size:18px">Can the model trigger a side effect without policy authorisation?</div><div class="small" style="font-size:13px;text-align:right;">Policy</div></div>
+        <div class="kv" style="padding:8px 0;border-bottom:1px solid var(--rule-soft);grid-template-columns:44px 1fr 140px;gap:14px;"><div class="k" style="font-size:16px">06</div><div class="v" style="font-size:18px">Is human approval engineered, authenticated, time-bounded, audited?</div><div class="small" style="font-size:13px;text-align:right;">Approval</div></div>
+        <div class="kv" style="padding:8px 0;border-bottom:1px solid var(--rule-soft);grid-template-columns:44px 1fr 140px;gap:14px;"><div class="k" style="font-size:16px">07</div><div class="v" style="font-size:18px">Are tools scoped by identity, delegation, context, and risk class?</div><div class="small" style="font-size:13px;text-align:right;">Tool Execution</div></div>
+        <div class="kv" style="padding:8px 0;border-bottom:1px solid var(--rule-soft);grid-template-columns:44px 1fr 140px;gap:14px;"><div class="k" style="font-size:16px">08</div><div class="v" style="font-size:18px">What stops 1,000 individually valid actions from causing aggregate damage?</div><div class="small" style="font-size:13px;text-align:right;">Bounding</div></div>
+      </div>
+      <div>
+        <div class="kv" style="padding:8px 0;border-bottom:1px solid var(--rule-soft);grid-template-columns:44px 1fr 140px;gap:14px;"><div class="k" style="font-size:16px">09</div><div class="v" style="font-size:18px">Does runtime behaviour feed back into governance classification?</div><div class="small" style="font-size:13px;text-align:right;">Feedback Loop</div></div>
+        <div class="kv" style="padding:8px 0;border-bottom:1px solid var(--rule-soft);grid-template-columns:44px 1fr 140px;gap:14px;"><div class="k" style="font-size:16px">10</div><div class="v" style="font-size:18px">Can you classify and trace the context used in a decision?</div><div class="small" style="font-size:13px;text-align:right;">Context</div></div>
+        <div class="kv" style="padding:8px 0;border-bottom:1px solid var(--rule-soft);grid-template-columns:44px 1fr 140px;gap:14px;"><div class="k" style="font-size:16px">11</div><div class="v" style="font-size:18px">Can you prove context was not tampered since retrieval?</div><div class="small" style="font-size:13px;text-align:right;">Hash Verify</div></div>
+        <div class="kv" style="padding:8px 0;border-bottom:1px solid var(--rule-soft);grid-template-columns:44px 1fr 140px;gap:14px;"><div class="k" style="font-size:16px">12</div><div class="v" style="font-size:18px">Does the system flag when expected context was not retrieved?</div><div class="small" style="font-size:13px;text-align:right;">Context Absence</div></div>
+        <div class="kv" style="padding:8px 0;border-bottom:1px solid var(--rule-soft);grid-template-columns:44px 1fr 140px;gap:14px;"><div class="k" style="font-size:16px">13</div><div class="v" style="font-size:18px">Can you reconstruct a multi-agent dependency chain?</div><div class="small" style="font-size:13px;text-align:right;">Evidence · Dep</div></div>
+        <div class="kv" style="padding:8px 0;border-bottom:1px solid var(--rule-soft);grid-template-columns:44px 1fr 140px;gap:14px;"><div class="k" style="font-size:16px">14</div><div class="v" style="font-size:18px">Can you quarantine one agent or tool without halting the platform?</div><div class="small" style="font-size:13px;text-align:right;">Recovery</div></div>
+        <div class="kv" style="padding:8px 0;border-bottom:1px solid var(--rule-soft);grid-template-columns:44px 1fr 140px;gap:14px;"><div class="k" style="font-size:16px">15</div><div class="v" style="font-size:18px">What happens if signing keys or workload identity roots are compromised?</div><div class="small" style="font-size:13px;text-align:right;">Key Lifecycle</div></div>
+        <div class="kv" style="padding:8px 0;border-bottom:1px solid var(--rule-soft);grid-template-columns:44px 1fr 140px;gap:14px;"><div class="k" style="font-size:16px">16</div><div class="v" style="font-size:18px">Do you have anomaly detection, not just logs?</div><div class="small" style="font-size:13px;text-align:right;">Detection</div></div>
+      </div>
+    </div>
+    <div class="footer"><span>§26 Client Diagnostic</span><span><span class="pg">34</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+<!-- 35 FINAL POSITION -->
+<section data-label="Final Position">
+  <div class="frame alt glow">
+    <div class="topbar"><span><span class="accent mono" style="font-weight:700">§28</span> &nbsp;&nbsp;Final Position</span><span>Close</span></div>
+    <div class="topbar-rule"></div>
+    <div class="body" style="justify-content:center;">
+      <div class="eyebrow" style="margin-top:0">One-Line Summary</div>
+      <div class="pull-quote" style="font-size:54px;margin-top:20px;max-width:1700px;">
+        Most systems can tell you <span class="hl">what happened</span>.<br/>This architecture proves <span class="accent">what caused it</span>, which controls were in force when it happened, and how to stop it when it goes wrong.
+      </div>
+      <div style="margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:56px;">
+        <div>
+          <div class="rule-rule">Defensible in April 2026 because</div>
+          <ul class="dash" style="margin-top:6px;color:var(--paper);font-size:20px;">
+            <li>Maps to NIST AI RMF, OWASP Agentic Top 10, Singapore MGF, EU AI Act obligations</li>
+            <li>Separates static integrity controls from dynamic behavioural controls</li>
+            <li>Explicitly identifies and classifies every gap by maturity level</li>
+            <li>Provides testable diagnostic questions for real deployments</li>
+            <li>Requires ongoing control-plane assurance, not one-time implementation</li>
+          </ul>
+        </div>
+        <div>
+          <div class="rule-rule">What matters</div>
+          <div class="body-text" style="color:#d8d1be;margin-top:6px;">Twelve control planes. Some backed by mature standards, some custom engineering, some unsolved. What matters is wiring them together explicitly, admitting the weak points, and proving which controls were in force when a decision happened.</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><span>Enterprise Agentic Control Architecture · v3 · April 2026</span><span><span class="pg">35</span> <span style="color:var(--muted-2)">/ 35</span></span></div>
+  </div>
+</section>
+
+</deck-stage>
+
+</body>
+</html>
